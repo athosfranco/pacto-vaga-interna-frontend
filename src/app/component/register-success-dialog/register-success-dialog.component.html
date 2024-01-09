@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Parabéns!</h1>
+<div mat-dialog-content>
+  <div class="flex col jc-center al-center gap-1">
+    <img class="finished-img" src="../../../assets/finished.svg" />
+    <span class="subtitle">Cadastro concluído com sucesso!</span>
+    <span class="body"
+      >Você já consegue acessar o sistema com seu usuário e senha.</span
+    >
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button
+    id="back-to-login-btn"
+    color="primary"
+    mat-raised-button
+    (click)="goToLogin()"
+  >
+    Ir para Login
+  </button>
+</div>

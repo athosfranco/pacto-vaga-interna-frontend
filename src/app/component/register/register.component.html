@@ -1,0 +1,217 @@
+<mat-card class="register-dialog">
+  <div class="title-container">
+    <img id="logo-img" src="../../../assets/pacto-black-logo.png" />
+    <span class="body">Formulário de Registro do Colaborador</span>
+  </div>
+
+  <mat-stepper class="stepper-container" linear #stepper>
+    <mat-step [stepControl]="firstFormGroup" [completed]="firstFormGroup.valid">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Dados básicos</ng-template>
+        <div class="flex col">
+          <p style="margin-bottom: 1rem">
+            Vamos iniciar o seu cadastro. Primeiro precisamos de algumas
+            informações sobre você.
+          </p>
+          <div class="flex col">
+            <mat-form-field>
+              <mat-label>Nome</mat-label>
+              <input
+                matInput
+                formControlName="firstName"
+                maxlength="20"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Sobrenome</mat-label>
+              <input
+                matInput
+                formControlName="lastName"
+                maxlength="40"
+                required
+              />
+            </mat-form-field>
+          </div>
+
+          <mat-form-field>
+            <mat-label>Gênero</mat-label>
+            <mat-select formControlName="gender">
+              <mat-option value="M">Masculino</mat-option>
+              <mat-option value="F">Feminino</mat-option>
+              <mat-option value="O">Outro</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button
+            mat-flat-button
+            color="primary"
+            matStepperNext
+            [disabled]="!canProceedToNextStep(0)"
+          >
+            Avançar
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step
+      [stepControl]="secondFormGroup"
+      label="Dados de colaborador"
+      [completed]="secondFormGroup.valid"
+    >
+      <form [formGroup]="secondFormGroup">
+        <div class="flex col gap-1">
+          <mat-label>Qual é o seu cargo atual na Pacto Soluções?</mat-label>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Ex.: Desenvolvedor Fullstack Pleno"
+              formControlName="currentJob"
+              maxlength="40"
+              required
+            />
+          </mat-form-field>
+          <mat-label>Quando você começou a trabalhar conosco?</mat-label>
+          <mat-form-field style="width: 300px">
+            <mat-label>Escolha uma data</mat-label>
+            <input
+              formControlName="hireDate"
+              matInput
+              [min]="minDate"
+              [max]="maxDate"
+              [matDatepicker]="picker"
+            />
+            <mat-hint>Data de início do seu contrato</mat-hint>
+
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="flex row al-center gap-1" style="margin-top: 2rem">
+          <button
+            mat-button
+            mat-stroked-button
+            color="primary"
+            matStepperPrevious
+          >
+            Voltar
+          </button>
+          <button
+            mat-button
+            mat-flat-button
+            color="primary"
+            [disabled]="!canProceedToNextStep(1)"
+            matStepperNext
+          >
+            Avançar
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step
+      [stepControl]="thirdFormGroup"
+      label="Usuário e senha"
+      [completed]="thirdFormGroup.valid"
+    >
+      <form [formGroup]="thirdFormGroup">
+        <div class="flex col gap-1">
+          <mat-label
+            >Defina seu nome de usuário e senha. Você vai utilizar essas
+            credenciais para acessar o sistema.</mat-label
+          >
+          <mat-form-field>
+            <mat-label>Nome de usuário</mat-label>
+            <input
+              formControlName="username"
+              matInput
+              placeholder="Ex.: joaosilva"
+              required
+              (input)="onUsernameInput($event)"
+              [disabled]="isLoadingRegister"
+              maxlength="20"
+            />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input
+              type="password"
+              maxlength="20"
+              formControlName="password"
+              matInput
+              [disabled]="isLoadingRegister"
+              required
+            />
+            <mat-hint>Pelo menos 8 caracteres, uma letra e um número.</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Confirmar Senha</mat-label>
+            <input
+              type="password"
+              maxlength="20"
+              formControlName="confirmPassword"
+              matInput
+              required
+            />
+            <mat-hint *ngIf="!verifyPasswordMatch()" style="color: red"
+              >A confirmação de senha precisa ser igual à senha.</mat-hint
+            >
+          </mat-form-field>
+        </div>
+
+        <div class="error-message" *ngIf="usernameAlreadyExistsError">
+          <span>Nome de usuário já existe!</span>
+        </div>
+        <div class="error-message" *ngIf="invalidPasswordError">
+          <span
+            >Senha inválida! Pelo menos 8 caracteres, uma letra e um número.
+          </span>
+        </div>
+
+        <div class="flex row al-center gap-1" style="margin-top: 1rem">
+          <button
+            mat-button
+            mat-stroked-button
+            color="primary"
+            matStepperPrevious
+            [disabled]="isLoadingRegister"
+          >
+            Voltar
+          </button>
+          <button
+            id="finish-registration-btn"
+            mat-button
+            mat-flat-button
+            color="primary"
+            (click)="onRegister()"
+            [disabled]="
+              isLoadingRegister ||
+              !canProceedToNextStep(2) ||
+              !verifyPasswordMatch()
+            "
+          >
+            <span *ngIf="!isLoadingRegister">Concluir cadastro</span>
+            <span *ngIf="isLoadingRegister">Carregando...</span>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+  <mat-divider style="margin-bottom: 1rem"></mat-divider>
+
+  <div class="bottom-container">
+    <div className="flex row gap-2 al-center jc-center">
+      <span class="caption">Já possui uma conta? </span>
+      <button mat-stroked-button (click)="onGoBackToLogin()" id="back-to-login">
+        Entrar
+      </button>
+    </div>
+  </div>
+</mat-card>

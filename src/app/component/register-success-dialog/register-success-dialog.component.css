@@ -1,0 +1,10 @@
+.finished-img {
+  width: 200px;
+  height: 200px;
+}
+
+#back-to-login-btn {
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+}

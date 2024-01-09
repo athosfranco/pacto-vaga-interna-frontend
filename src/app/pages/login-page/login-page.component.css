@@ -1,0 +1,9 @@
+#logo-img {
+  transform: scale(0.5);
+}
+
+.bottom-info {
+  position: absolute;
+  bottom: 10px;
+  color: #ddd;
+}

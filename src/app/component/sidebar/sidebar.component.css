@@ -1,0 +1,21 @@
+#sidebar-container {
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  height: 100vh;
+  position: fixed;
+  transition: 0.3s ease;
+  width: 20vw;
+}
+
+.sidebar-closed {
+  transform: translateX(-400px);
+}
+.sidebar-open {
+  transform: translateX(0);
+}
+
+@media (max-width: 450px) {
+  #sidebar-container {
+    width: 100vw;
+  }
+}

@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <button
+    id="toggle-sidebar"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Toggle Sidebar"
+    (click)="toggleSidebar()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img class="logo" src="../../../assets/pacto-black-logo.png" />
+  <span class="body" style="margin-left: 10px">Vagas Internas</span>
+  <span class="example-spacer"></span>
+
+  <mat-chip *ngIf="user" color="accent">
+    <img
+      matChipAvatar
+      src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+      alt="Photo of a Shiba Inu"
+    />
+    {{ user.username }}
+  </mat-chip>
+</mat-toolbar>

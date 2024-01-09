@@ -1,1 +1,83 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #161d2a;
+}
+
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.al-center {
+  align-items: center;
+}
+
+.al-start {
+  align-items: flex-start;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.jc-start {
+  justify-content: flex-start;
+}
+
+.jc-space-between {
+  justify-content: space-between;
+}
+
+.jc-end {
+  justify-content: flex-end;
+}
+
+.custom-divider {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  padding: 0.5rem 0;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.body {
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.caption {
+  padding: 0.5rem 0;
+  color: #505050;
+  font-size: 0.8rem;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+a {
+  color: #ddd;
+}

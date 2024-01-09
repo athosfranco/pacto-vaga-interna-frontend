@@ -1,0 +1,39 @@
+<mat-card class="login-dialog" [@fadeInZoom]>
+  <form [formGroup]="loginForm">
+    <span class="subtitle">Bem vindo!</span>
+    <p class="body">
+      Informe suas credenciais para acessar o sistema de vagas internas
+    </p>
+    <div class="flex col">
+      <mat-form-field>
+        <mat-label>Nome de Usuário</mat-label>
+        <input matInput formControlName="username" placeholder="Username" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+      <span *ngIf="tokenExpiredNotif" class="error-message"
+        >O seu token de acesso expirou. Por favor, faça login novamente.</span
+      >
+      <span *ngIf="errorMessage" class="error-message">{{ errorMessage }}</span>
+      <button
+        class="custom-divider"
+        mat-raised-button
+        color="primary"
+        (click)="onLogin()"
+      >
+        <mat-icon fontIcon="login"></mat-icon>
+        <span *ngIf="!isLoading">Entrar</span>
+        <span *ngIf="isLoading">Carregando...</span>
+      </button>
+      <mat-divider></mat-divider>
+      <span class="caption">Não possui uma conta?</span>
+      <button mat-stroked-button (click)="onGoToRegister()">
+        <mat-icon fontIcon="person_add"></mat-icon>
+        Registre-se
+      </button>
+    </div>
+  </form>
+</mat-card>
