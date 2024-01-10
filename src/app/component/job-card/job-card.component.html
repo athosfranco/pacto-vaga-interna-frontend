@@ -1,0 +1,21 @@
+<mat-card id="job-card-container" (click)="goToJobDetails(job.jobId)">
+  <span class="job-title">
+    {{ job.title }}
+  </span>
+  <div class="flex row al-center">
+    <mat-icon class="icon">access_time</mat-icon>
+    <span class="published-by"
+      >Publicada {{ formatTimeDifference(job.createdAt) }}</span
+    >
+  </div>
+
+  <div class="chip-container">
+    <div *ngFor="let skill of job.requiredSkills" class="job-requirement-chip">
+      {{ skill.skillName }}
+    </div>
+  </div>
+
+  <p class="job-description">
+    {{ job.description }}
+  </p>
+</mat-card>

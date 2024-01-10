@@ -1,0 +1,22 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 500px;
+}
+
+.finish-img {
+  width: 250px;
+}
+
+@media (max-width: 450px) {
+  .content {
+    width: 100%;
+  }
+
+  .finish-img {
+    width: 50%;
+  }
+}

@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Confirmar candidatura</h1>
+<div *ngIf="finishedRequest === null" mat-dialog-content>
+  <span> Deseja se candidatar para esta vaga?</span>
+</div>
+<div class="content" *ngIf="finishedRequest === 'Success'" mat-dialog-content>
+  <img class="finish-img" src="../../../assets/finished.svg" />
+  <span
+    >Parabéns! Você agora está participando do processo seletivo desta vaga. Vá
+    para <strong>Painel do Candidato</strong> para acompanhar.</span
+  >
+</div>
+<div class="content" *ngIf="finishedRequest === 'Fail'" mat-dialog-content>
+  <img class="finish-img" src="../../../assets/error.svg" />
+  <span>Não foi possível finalizar sua candidatura. </span>
+  <span>ERRO: {{ errorMessage }}</span>
+</div>
+<mat-divider></mat-divider>
+<div *ngIf="finishedRequest !== null" mat-dialog-actions>
+  <button
+    style="width: 100%"
+    color="primary"
+    [disabled]="isLoading"
+    mat-flat-button
+    mat-dialog-close
+  >
+    OK
+  </button>
+</div>
+<div *ngIf="finishedRequest === null" mat-dialog-actions>
+  <button [disabled]="isLoading" mat-stroked-button mat-dialog-close>
+    Cancelar
+  </button>
+  <button
+    [disabled]="isLoading"
+    mat-raised-button
+    color="accent"
+    (click)="onHandleJobApplication()"
+  >
+    <span *ngIf="!isLoading">Confirmar</span>
+    <mat-spinner *ngIf="isLoading" style="width: 30px"></mat-spinner>
+  </button>
+</div>

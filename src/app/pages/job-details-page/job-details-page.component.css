@@ -1,0 +1,48 @@
+.job-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  z-index: 2;
+  color: #ddd;
+  line-height: 1.3;
+}
+
+.details-span {
+  margin-top: 2rem;
+  color: #ddd;
+  font-size: 1.2rem;
+  z-index: 2;
+}
+.published-by {
+  color: white;
+  z-index: 2;
+}
+.job-requirement-chip {
+  padding: 5px 20px;
+  border-radius: 30px;
+  background-color: #42567c;
+  color: white;
+}
+.description {
+  margin: 1rem 0;
+}
+
+.chip-container {
+  margin-top: 0.5rem;
+  gap: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.section-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.about {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+}

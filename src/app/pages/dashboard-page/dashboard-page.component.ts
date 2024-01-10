@@ -10,9 +10,8 @@ export class DashboardPageComponent {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    // Example: Check authentication status when the component is initialized
     if (!this.authService.isAuthenticated()) {
-      // Redirect to the login page or perform another action
+      this.authService.logout();
     }
   }
 }

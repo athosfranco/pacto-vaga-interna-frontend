@@ -1,0 +1,42 @@
+<div class="flex col gap-1">
+  <span class="details-span">Detalhes da vaga</span>
+  <span *ngIf="job" class="job-title">{{ job.title }}</span>
+  <span class="published-by"
+    >Publicada {{ formatTimeDifference(job.createdAt) }} por
+    <strong
+      >{{ job.publishedBy.firstName }} {{ job.publishedBy.lastName }}</strong
+    ></span
+  >
+
+  <mat-card class="about">
+    <span class="section-title">Descrição</span>
+    <mat-divider></mat-divider>
+    <span class="description">{{ job.description }}</span>
+    <span class="section-title">Requisitos</span>
+    <mat-divider></mat-divider>
+    <div class="chip-container">
+      <div
+        *ngFor="let skill of job.requiredSkills"
+        class="job-requirement-chip"
+      >
+        {{ skill.skillName }}
+      </div>
+      <span *ngIf="job.requiredSkills.length === 0"
+        >O criador desta vaga não especificou requisitos.</span
+      >
+    </div>
+  </mat-card>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Expresse seu interesse (Opcional)</mat-label>
+    <textarea id="userMessage" maxlength="255" matInput></textarea>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="openConfirmApplicationDialog()"
+  >
+    Aplicar para esta vaga
+  </button>
+</div>

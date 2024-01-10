@@ -41,7 +41,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { LoginComponent } from './component/login/login.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './component/register/register.component';
 
 //Modulos de config de datas
@@ -54,6 +54,21 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { RegisterSuccessDialogComponent } from './component/register-success-dialog/register-success-dialog.component';
 import { TopbarComponent } from './component/topbar/topbar.component';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
+import { UserPanelPageComponent } from './pages/user-panel-page/user-panel-page.component';
+import { AdminPanelPageComponent } from './pages/admin-panel-page/admin-panel-page.component';
+import { UnauthorizedPageComponent } from './pages/unauthorized-page/unauthorized-page.component';
+import { RedirectComponent } from './component/redirect/redirect.component';
+import { LogoutDialogComponent } from './component/logout-dialog/logout-dialog.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { JobsPageComponent } from './pages/jobs-page/jobs-page.component';
+import { JobCardComponent } from './component/job-card/job-card.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { JobDetailsPageComponent } from './pages/job-details-page/job-details-page.component';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { ConfirmApplicationDialogComponent } from './component/confirm-application-dialog/confirm-application-dialog.component';
+import { JobApplicationCardComponent } from './component/job-application-card/job-application-card.component';
+import { JobApplicationListComponent } from './component/job-application-list/job-application-list.component';
+import { JobApplicationDetailsPageComponent } from './pages/job-application-details-page/job-application-details-page.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +81,19 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
     RegisterSuccessDialogComponent,
     TopbarComponent,
     SidebarComponent,
+    UserPanelPageComponent,
+    AdminPanelPageComponent,
+    UnauthorizedPageComponent,
+    RedirectComponent,
+    LogoutDialogComponent,
+    ProfileComponent,
+    JobsPageComponent,
+    JobCardComponent,
+    JobDetailsPageComponent,
+    ConfirmApplicationDialogComponent,
+    JobApplicationCardComponent,
+    JobApplicationListComponent,
+    JobApplicationDetailsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -110,7 +138,13 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

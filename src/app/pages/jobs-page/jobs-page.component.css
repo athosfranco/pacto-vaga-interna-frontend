@@ -1,0 +1,28 @@
+.search-field-container {
+  display: flex;
+  flex-direction: column;
+
+  margin: 2rem 0;
+  flex: 1;
+}
+
+.search-field {
+  -webkit-box-shadow: 10px 10px 76px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 10px 10px 76px 0px rgba(0, 0, 0, 1);
+  box-shadow: 10px 10px 76px 0px rgba(0, 0, 0, 1);
+}
+
+.no-results-container img {
+  width: 50%;
+}
+.no-results-container span {
+  margin-top: 1rem;
+  font-family: "Montserrat", sans serif;
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+.jobs-qtd-found {
+  color: white;
+  z-index: 2;
+}

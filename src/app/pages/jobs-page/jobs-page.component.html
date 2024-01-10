@@ -1,0 +1,51 @@
+<div id="job-page-container">
+  <div class="flex col">
+    <span class="page-title">Encontrar Vagas</span>
+    <div class="search-field-container">
+      <mat-form-field class="search-field">
+        <mat-label>Pesquise por vagas aqui</mat-label>
+
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="searchValue"
+          (input)="onSearchInputChange()"
+        />
+        @if (searchValue) {
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="handleClear()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        }
+      </mat-form-field>
+      <span *ngIf="jobList.length !== 0" class="jobs-qtd-found"
+        >{{ jobList.length }} vaga{{
+          jobList.length > 1 ? "s" : ""
+        }}
+        encontrada{{ jobList.length > 1 ? "s" : "" }}
+        <span *ngIf="lastSearch !== ''"
+          >para <strong style="color: #ff4786">{{ lastSearch }}</strong></span
+        ></span
+      >
+    </div>
+  </div>
+
+  <div class="job-list" *ngFor="let job of jobList">
+    <app-job-card [job]="job" [searchQuery]="searchValue"></app-job-card>
+  </div>
+  <div
+    class="no-results-container flex col al-center jc-center"
+    *ngIf="jobList.length === 0"
+  >
+    <img src="../../../assets/emptysearch.svg" />
+    <span
+      >Não foram encontrados resultados para
+      <strong>{{ searchValue }}</strong></span
+    >
+    =
+  </div>
+</div>

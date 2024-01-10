@@ -1,0 +1,54 @@
+<mat-card
+  id="job-application-card-container"
+  (click)="goToJobApplication(jobApplication.applicationId)"
+>
+  <div class="flex row jc-space-between al-center">
+    <span class="job-title">{{ jobApplication.appliedJob.title }}</span>
+
+    <span
+      class="stage-badge alert-warning"
+      *ngIf="jobApplication.applicationStage === 'UNDER_REVIEW'"
+      >Em Análise</span
+    >
+    <span
+      class="stage-badge alert-success"
+      *ngIf="jobApplication.applicationStage === 'APPROVED'"
+      >Aprovado</span
+    >
+    <span
+      class="stage-badge alert-success"
+      *ngIf="jobApplication.applicationStage === 'REJECTED'"
+      >Reprovado</span
+    >
+    <span
+      class="stage-badge alert-success"
+      *ngIf="jobApplication.applicationStage === 'USER_CLOSED'"
+      >Encerrada pelo usuário</span
+    >
+    <span
+      class="stage-badge alert-success"
+      *ngIf="jobApplication.applicationStage === 'CREATOR_CLOSED'"
+      >Encerrada pelo recrutador</span
+    >
+  </div>
+
+  <span>{{ jobApplication.appliedJob.description }}</span>
+
+  <mat-divider style="margin: 1rem 0"></mat-divider>
+  <div class="flex col">
+    <span class="published-by"
+      >Você se candidatou em:
+      {{ formatDateTime(jobApplication.applicationDate) }}</span
+    >
+    <span *ngIf="jobApplication.userMessage"
+      ><strong class="primary-color">💬 Mensagem enviada:</strong> "{{
+        jobApplication.userMessage
+      }}"</span
+    >
+    <span *ngIf="jobApplication.feedback"
+      ><strong class="accent-color">💬 Feedback do recrutador:</strong> "{{
+        jobApplication.feedback
+      }}"</span
+    >
+  </div>
+</mat-card>

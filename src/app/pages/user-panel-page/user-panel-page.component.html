@@ -1,0 +1,52 @@
+<div id="user-page-container">
+  <div class="flex col">
+    <span class="page-title">Painel do Candidato</span>
+
+    <span class="user-full-name"
+      >Bem vindo,
+      <strong>{{ user.firstName }} {{ user.lastName }}</strong></span
+    >
+    <div class="flex row al-center gap-1">
+      <mat-chip color="accent" *ngIf="user.currentJob">{{
+        user.currentJob
+      }}</mat-chip>
+      <mat-chip>{{ user.formattedHireDate }}</mat-chip>
+    </div>
+
+    <div style="margin-top: 2.5rem" class="flex row jc-space-between al-center">
+      <span class="my-applications-title">Minhas Candidaturas</span>
+      <button mat-flat-button color="primary" (click)="goToJobs()">
+        Buscar vagas
+      </button>
+    </div>
+
+    <div class="cards-container">
+      <mat-card class="dashboard-card job-applications-card">
+        <span class="dashboard-card-value">{{ jobApplications.length }}</span>
+        <span class="dashboard-card-title"> Candidaturas</span>
+      </mat-card>
+      <mat-card class="dashboard-card under-review-card">
+        <span class="dashboard-card-value">{{
+          jobApplicationsUnderReview.length
+        }}</span>
+        <span class="dashboard-card-title"> Em Análise</span>
+      </mat-card>
+      <mat-card class="dashboard-card finished-applications-card">
+        <span class="dashboard-card-value">{{
+          this.jobApplicationsClosed.length
+        }}</span>
+        <span class="dashboard-card-title">Encerradas</span>
+      </mat-card>
+
+      <mat-card class="dashboard-card approved-jobs-card">
+        <span class="dashboard-card-value">{{
+          this.jobApplicationsApproved.length
+        }}</span>
+        <span class="dashboard-card-title"> Aprovadas </span>
+      </mat-card>
+    </div>
+    <app-job-application-list
+      [jobApplications]="jobApplications"
+    ></app-job-application-list>
+  </div>
+</div>

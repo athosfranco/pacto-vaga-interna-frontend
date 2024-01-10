@@ -1,0 +1,46 @@
+#job-application-card-container {
+  padding: 1.5rem 2.5rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.job-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #242424;
+}
+
+.job-description {
+  margin: 1rem 0;
+
+  text-overflow: ellipsis;
+}
+
+.published-by {
+  color: #707070;
+  margin-bottom: 0.5rem;
+}
+
+.stage-badge {
+  font-size: 1rem;
+  padding: 8px 16px;
+  min-width: 100px;
+}
+
+@media (max-width: 450px) {
+  #job-application-card-container {
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  .job-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #242424;
+  }
+  .stage-badge {
+    font-size: 0.7rem;
+  }
+}

@@ -3,12 +3,25 @@
   border-right: 1px solid #ddd;
   height: 100vh;
   position: fixed;
+  top: 60px;
   transition: 0.3s ease;
   width: 20vw;
+
+  z-index: 500;
+}
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+.sidebar-nav-span {
+  font-size: 1.2rem;
 }
 
 .sidebar-closed {
-  transform: translateX(-400px);
+  transform: translateX(-500px);
+  opacity: 0;
 }
 .sidebar-open {
   transform: translateX(0);
@@ -17,5 +30,8 @@
 @media (max-width: 450px) {
   #sidebar-container {
     width: 100vw;
+  }
+  .sidebar-nav-span {
+    font-size: 1.8rem;
   }
 }

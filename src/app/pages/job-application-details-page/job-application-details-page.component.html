@@ -1,0 +1,87 @@
+<div class="flex col gap-1">
+  <span class="details-span">Detalhes da Candidatura</span>
+  <span *ngIf="jobApplication" class="job-title">{{
+    jobApplication.appliedJob.title
+  }}</span>
+  <span class="published-by"
+    >Você se candidatou em {{ jobApplication.applicationDate }} ({{
+      formatTimeDifference(jobApplication.applicationDate)
+    }})
+  </span>
+
+  <mat-card class="section-card">
+    <span class="section-title">Status</span>
+    <mat-divider style="margin-bottom: 1rem"></mat-divider>
+    <span
+      class="p-1 alert-warning"
+      *ngIf="jobApplication.applicationStage === 'UNDER_REVIEW'"
+      >🔍 Essa candidatura está em análise</span
+    >
+    <span
+      class="p-1 alert-success"
+      *ngIf="jobApplication.applicationStage === 'APPROVED'"
+      >✅ Parabéns! Você foi aprovado para a próxima etapa.</span
+    >
+    <span
+      class="p-1 alert-success"
+      *ngIf="jobApplication.applicationStage === 'REJECTED'"
+      >❌ Infelizmente a sua candidatura foi rejeitada.</span
+    >
+    <span
+      class="p-1 alert-success"
+      *ngIf="jobApplication.applicationStage === 'USER_CLOSED'"
+      >❌ Você encerrou essa candidatura.</span
+    >
+    <span
+      class="p-1 alert-success"
+      *ngIf="jobApplication.applicationStage === 'CREATOR_CLOSED'"
+      >❌ O criador da vaga encerrou essa candidatura.</span
+    >
+
+    <div *ngIf="jobApplication.userMessage" style="margin-top: 1rem">
+      <span class="section-title">Sua Mensagem</span>
+      <mat-divider style="margin-bottom: 1rem"></mat-divider>
+      <span>"{{ jobApplication.userMessage }}"</span>
+    </div>
+    <span class="section-title" style="margin-top: 1rem"
+      >Feedback do Recrutador</span
+    >
+    <mat-divider style="margin-bottom: 1rem"></mat-divider>
+    <span class="alert-info" *ngIf="jobApplication.feedback"
+      >💬 {{ jobApplication.feedback }}</span
+    >
+    <span *ngIf="!jobApplication.feedback"
+      >Nenhum feedback disponível ainda. Você será avisado quando esta vaga for
+      atualizada.</span
+    >
+  </mat-card>
+
+  <mat-card class="section-card">
+    <span class="section-title">Descrição da Vaga</span>
+    <mat-divider></mat-divider>
+    <span class="description">{{ jobApplication.appliedJob.description }}</span>
+    <span class="section-title">Requisitos da Vaga</span>
+    <mat-divider></mat-divider>
+    <div class="chip-container">
+      <div
+        *ngFor="let skill of jobApplication.appliedJob.requiredSkills"
+        class="job-requirement-chip"
+      >
+        {{ skill.skillName }}
+      </div>
+      <span *ngIf="jobApplication.appliedJob.requiredSkills.length === 0"
+        >O criador desta vaga não especificou requisitos.</span
+      >
+    </div>
+  </mat-card>
+  <span class="details-span">Ações Disponíveis</span>
+  <div class="flex row al-center gap-1">
+    <button
+      [disabled]="jobApplication.applicationStage !== 'UNDER_REVIEW'"
+      mat-raised-button
+      color="accent"
+    >
+      Encerrar Candidatura
+    </button>
+  </div>
+</div>

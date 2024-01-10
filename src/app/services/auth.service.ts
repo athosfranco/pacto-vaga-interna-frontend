@@ -22,41 +22,12 @@ export class AuthService {
   ) {
     //VERIFICA TOKEN NA INICIALIZAÇÃO
     this.checkTokenExpiration();
-    //VERIFICA SE HÁ SESSÃO DE USUÁRIO
-    // this.initUser();
+
     // VERIFICA TOKEN A CADA 5 MIN
     setInterval(() => {
       this.checkTokenExpiration();
     }, 5 * 60 * 1000);
   }
-
-  private fetchUserFromServer(): Observable<any> {
-    const token = localStorage.getItem('access_token');
-    const headers = { Authorization: `Bearer ${token}` };
-    const userId = localStorage.getItem('user_id');
-
-    return this.http.get(`${this.apiUrl}/api/users/${userId}`, { headers });
-  }
-
-  // private initUser(): void {
-  //   const token = localStorage.getItem('access_token');
-
-  //   const tokenIsValid = token && !this.jwtHelper.isTokenExpired(token);
-
-  //   if (tokenIsValid) {
-  //     this.fetchUserFromServer().subscribe(
-  //       (user) => {
-  //         console.log('USER:', user);
-  //         this.userService.saveUserOnService(user);
-  //       },
-  //       (error) => {
-  //         alert('Erro ao buscar info do user, ver console');
-  //         console.error('Error fetching user information:', error);
-  //         this.logout();
-  //       }
-  //     );
-  //   }
-  // }
 
   public isAuthenticated(): boolean {
     const token = localStorage.getItem('access_token');
@@ -100,6 +71,52 @@ export class AuthService {
     if (this.isTokenExpired()) {
       this.tokenExpiredNotification = true;
       this.logout();
+    }
+  }
+  public hasAuthority(authority: string): boolean {
+    const userString = localStorage.getItem('user');
+
+    if (!userString) {
+      this.tokenExpiredNotification = true;
+      this.logout();
+      return false;
+    }
+
+    const user = JSON.parse(userString);
+
+    return (
+      user?.authorities?.some((auth: any) => auth.authority === authority) ||
+      false
+    );
+  }
+
+  public redirectBasedOnAuthority(): string {
+    const userString = localStorage.getItem('user');
+
+    let user;
+
+    if (userString) {
+      user = JSON.parse(userString);
+    }
+
+    if (user) {
+      const hasUserAuthority = user?.authorities?.find(
+        (auth: any) => auth.authority === 'USER'
+      );
+      const hasAdminAuthority = user?.authorities?.find(
+        (auth: any) => auth.authority === 'ADMIN'
+      );
+
+      if (hasAdminAuthority) {
+        return 'admin-panel';
+      } else if (hasUserAuthority) {
+        return 'user-panel';
+      } else {
+        return 'unauthorized';
+      }
+    } else {
+      this.logout();
+      return '';
     }
   }
 }

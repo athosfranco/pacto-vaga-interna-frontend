@@ -7,12 +7,22 @@
     <div class="flex col">
       <mat-form-field>
         <mat-label>Nome de Usuário</mat-label>
-        <input matInput formControlName="username" placeholder="Username" />
+        <input
+          matInput
+          formControlName="username"
+          placeholder="Username"
+          autocomplete="off"
+        />
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Senha</mat-label>
-        <input matInput type="password" formControlName="password" />
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          autocomplete="off"
+        />
       </mat-form-field>
       <span *ngIf="tokenExpiredNotif" class="error-message"
         >O seu token de acesso expirou. Por favor, faça login novamente.</span
