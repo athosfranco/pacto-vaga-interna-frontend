@@ -117,9 +117,9 @@ body {
   color: #938845;
 }
 .alert-fail {
-  background-color: #ffc0d9;
+  background-color: #fccfe0;
   border: 1px solid #b75b7e;
-  color: #b75b7e;
+  color: #934965;
 }
 .accent-color {
   color: #ff4786;
@@ -133,6 +133,14 @@ body {
 
 .p-1 {
   padding: 0.5rem 1rem;
+}
+
+.clickable-span {
+  cursor: pointer;
+}
+
+.clickable-span:hover {
+  text-decoration: underline;
 }
 
 a {

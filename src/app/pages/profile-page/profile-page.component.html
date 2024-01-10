@@ -1,0 +1,68 @@
+<div id="profile-page-container" *ngIf="user">
+  <div class="flex col">
+    <span class="page-title">Perfil de Usuário</span>
+    <div style="z-index: 2" class="flex row al-center">
+      <span *ngIf="user.gender === 'M'"> 🚹 </span>
+      <span *ngIf="user.gender === 'F'"> 🚺 </span>
+      <span class="user-full-name">
+        {{ user.firstName }} {{ user.lastName }} ({{ user.username }})</span
+      >
+    </div>
+
+    <div class="flex row al-center gap-1">
+      <mat-chip color="accent" *ngIf="user.currentJob">{{
+        user.currentJob
+      }}</mat-chip>
+      <mat-chip>{{ formattedHireDate }}</mat-chip>
+    </div>
+  </div>
+  <mat-card class="section-card">
+    <span class="section-title">Adicionar habilidade</span>
+    <mat-divider style="margin-bottom: 1rem"></mat-divider>
+    <div class="flex row al-center">
+      <mat-form-field style="flex: 1">
+        <mat-label>Selecione uma habilidade</mat-label>
+        <mat-select
+          [disabled]="skillsAvaliable.length === 0"
+          [(value)]="selectedSkill"
+        >
+          <mat-option *ngFor="let skill of skillsAvaliable" [value]="skill">
+            {{ skill.skillName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button
+        class="add-skill-btn"
+        [disabled]="skillsAvaliable.length === 0"
+        mat-raised-button
+        color="primary"
+        (click)="addSkillToUser()"
+      >
+        Adicionar
+      </button>
+    </div>
+    <span class="section-title">Suas Habilidades</span>
+    <mat-divider style="margin-bottom: 1rem"></mat-divider>
+
+    <div class="chip-container">
+      <div *ngFor="let skill of user.skills" class="job-requirement-chip">
+        {{ skill.skillName }}
+      </div>
+      <span *ngIf="user.skills.length === 0"
+        >Você ainda não cadastrou nenhuma habilidade.</span
+      >
+    </div>
+  </mat-card>
+  <mat-card class="section-card">
+    <span class="section-title">Níveis de Acesso</span>
+    <mat-divider></mat-divider>
+    <div class="chip-container">
+      <div
+        *ngFor="let authority of user.authorities"
+        class="job-requirement-chip"
+      >
+        {{ authority.authority }}
+      </div>
+    </div>
+  </mat-card>
+</div>

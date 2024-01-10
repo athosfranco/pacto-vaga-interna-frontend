@@ -6,14 +6,33 @@
       >Bem vindo,
       <strong>{{ user.firstName }} {{ user.lastName }}</strong></span
     >
-    <div class="flex row al-center gap-1">
+
+    <div
+      style="z-index: 2; padding: 1rem"
+      *ngIf="user.skills.length === 0"
+      class="flex col gap-1 alert-fail"
+    >
+      <span style="font-size: 1.5rem; font-weight: 600"> 🚨 Atenção</span>
+      <mat-divider></mat-divider>
+      <span
+        >Você ainda não possui habilidades cadastradas no sistema. Registre suas
+        habilidades em
+        <strong
+          ><span class="clickable-span" (click)="goToProfile()"
+            >Meu Perfil</span
+          >
+        </strong>
+        e amplie suas chances de ser selecionado.</span
+      >
+    </div>
+    <!-- <div class="flex row al-center gap-1">
       <mat-chip color="accent" *ngIf="user.currentJob">{{
         user.currentJob
       }}</mat-chip>
       <mat-chip>{{ user.formattedHireDate }}</mat-chip>
-    </div>
+    </div> -->
 
-    <div style="margin-top: 2.5rem" class="flex row jc-space-between al-center">
+    <div style="margin-top: 1rem" class="flex row jc-space-between al-center">
       <span class="my-applications-title">Minhas Candidaturas</span>
       <button mat-flat-button color="primary" (click)="goToJobs()">
         Buscar vagas

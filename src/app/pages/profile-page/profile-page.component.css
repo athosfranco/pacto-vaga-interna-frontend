@@ -1,0 +1,49 @@
+#profile-page-container {
+}
+
+.user-full-name {
+  margin: 1.2rem 0;
+  font-size: 1.2rem;
+  color: white;
+  z-index: 2;
+  font-family: "Montserrat", sans-serif;
+}
+
+.job-requirement-chip {
+  padding: 5px 20px;
+  border-radius: 30px;
+  background-color: #42567c;
+  color: white;
+}
+.description {
+  margin: 1rem 0;
+}
+
+.chip-container {
+  margin-top: 0.5rem;
+  gap: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.section-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.section-card {
+  margin: 1rem 0;
+  padding: 1rem 2rem;
+}
+.add-skill-btn {
+  margin-left: 10px;
+  height: 50px;
+  margin-bottom: 1.2rem;
+}
+
+@media (max-width: 450px) {
+}

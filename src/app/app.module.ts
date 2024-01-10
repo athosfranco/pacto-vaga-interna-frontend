@@ -45,11 +45,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './component/register/register.component';
 
 //Modulos de config de datas
-import {
-  MatNativeDateModule,
-  DateAdapter,
-  MAT_DATE_FORMATS,
-} from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { RegisterSuccessDialogComponent } from './component/register-success-dialog/register-success-dialog.component';
 import { TopbarComponent } from './component/topbar/topbar.component';
@@ -59,16 +55,17 @@ import { AdminPanelPageComponent } from './pages/admin-panel-page/admin-panel-pa
 import { UnauthorizedPageComponent } from './pages/unauthorized-page/unauthorized-page.component';
 import { RedirectComponent } from './component/redirect/redirect.component';
 import { LogoutDialogComponent } from './component/logout-dialog/logout-dialog.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+
 import { JobsPageComponent } from './pages/jobs-page/jobs-page.component';
 import { JobCardComponent } from './component/job-card/job-card.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { JobDetailsPageComponent } from './pages/job-details-page/job-details-page.component';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
+
 import { ConfirmApplicationDialogComponent } from './component/confirm-application-dialog/confirm-application-dialog.component';
 import { JobApplicationCardComponent } from './component/job-application-card/job-application-card.component';
 import { JobApplicationListComponent } from './component/job-application-list/job-application-list.component';
 import { JobApplicationDetailsPageComponent } from './pages/job-application-details-page/job-application-details-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +83,6 @@ import { JobApplicationDetailsPageComponent } from './pages/job-application-deta
     UnauthorizedPageComponent,
     RedirectComponent,
     LogoutDialogComponent,
-    ProfileComponent,
     JobsPageComponent,
     JobCardComponent,
     JobDetailsPageComponent,
@@ -94,6 +90,7 @@ import { JobApplicationDetailsPageComponent } from './pages/job-application-deta
     JobApplicationCardComponent,
     JobApplicationListComponent,
     JobApplicationDetailsPageComponent,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,

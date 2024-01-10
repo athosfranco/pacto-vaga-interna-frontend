@@ -12,6 +12,7 @@ import { AdminPanelPageComponent } from './pages/admin-panel-page/admin-panel-pa
 import { JobsPageComponent } from './pages/jobs-page/jobs-page.component';
 import { JobDetailsPageComponent } from './pages/job-details-page/job-details-page.component';
 import { JobApplicationDetailsPageComponent } from './pages/job-application-details-page/job-application-details-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -44,6 +45,10 @@ const routes: Routes = [
       {
         path: 'job-application-details',
         component: JobApplicationDetailsPageComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfilePageComponent,
       },
       {
         path: 'admin-panel',

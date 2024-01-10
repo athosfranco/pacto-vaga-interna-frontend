@@ -7,7 +7,9 @@
       <span class="sidebar-nav-span">Encontrar Vagas</span>
     </button>
     <button mat-list-item>
-      <span class="sidebar-nav-span">Meu Perfil</span>
+      <span class="sidebar-nav-span" (click)="navigateTo('profile')"
+        >Meu Perfil</span
+      >
     </button>
     <button mat-list-item (click)="openLogoutDialog()">
       <span class="sidebar-nav-span">Sair</span>

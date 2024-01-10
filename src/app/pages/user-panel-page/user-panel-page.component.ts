@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { format, differenceInMonths, differenceInYears } from 'date-fns';
 import { JobService } from '../../services/job.service';
 import { Router } from '@angular/router';
 
@@ -15,7 +14,7 @@ export class UserPanelPageComponent {
     const userString = localStorage.getItem('user');
     if (userString) {
       this.user = JSON.parse(userString);
-      this.formatHireDate();
+
       const userId = JSON.parse(userString).userId;
       this.fetchJobApplications(userId);
     }
@@ -33,6 +32,9 @@ export class UserPanelPageComponent {
 
   goToJobs() {
     this.router.navigate(['/dashboard/jobs']);
+  }
+  goToProfile() {
+    this.router.navigate(['/dashboard/profile']);
   }
 
   fetchJobApplications(userId: string): void {
@@ -60,26 +62,5 @@ export class UserPanelPageComponent {
         console.error('Error fetching job applications:', error);
       }
     );
-  }
-
-  formatHireDate(): void {
-    const hireDate = new Date(this.user.hireDate);
-    const currentDate = new Date();
-
-    const monthsDifference = differenceInMonths(currentDate, hireDate);
-    const yearsDifference = differenceInYears(currentDate, hireDate);
-
-    if (yearsDifference > 0) {
-      this.user.formattedHireDate = `Colaborador há ${yearsDifference} ${
-        yearsDifference === 1 ? 'ano' : 'anos'
-      }`;
-    } else if (monthsDifference > 1) {
-      this.user.formattedHireDate = `Colaborador há ${monthsDifference} ${
-        monthsDifference === 1 ? 'mês' : 'meses'
-      }
-      `;
-    } else {
-      this.user.formattedHireDate = `Colaborador novo`;
-    }
   }
 }
