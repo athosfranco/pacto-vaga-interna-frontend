@@ -1,21 +1,38 @@
-<mat-card id="job-card-container" (click)="goToJobDetails(job.jobId)">
-  <span class="job-title">
-    {{ job.title }}
-  </span>
-  <div class="flex row al-center">
-    <mat-icon class="icon">access_time</mat-icon>
-    <span class="published-by"
-      >Publicada {{ formatTimeDifference(job.createdAt) }}</span
-    >
-  </div>
-
-  <div class="chip-container">
-    <div *ngFor="let skill of job.requiredSkills" class="job-requirement-chip">
-      {{ skill.skillName }}
+<mat-card id="job-card-container">
+  <div (click)="goToJobDetails(job.jobId)">
+    <span class="job-title">
+      {{ job.title }}
+    </span>
+    <div class="flex row al-center">
+      <mat-icon class="icon">access_time</mat-icon>
+      <span class="published-by"
+        >Publicada {{ formatTimeDifference(job.createdAt) }}</span
+      >
     </div>
+
+    <div class="chip-container">
+      <div
+        *ngFor="let skill of job.requiredSkills"
+        class="job-requirement-chip"
+      >
+        {{ skill.skillName }}
+      </div>
+    </div>
+
+    <p class="job-description">
+      {{ job.description }}
+    </p>
   </div>
 
-  <p class="job-description">
-    {{ job.description }}
-  </p>
+  <!-- <div class="flex col" *ngIf="isAdmin()">
+    <mat-divider style="margin-bottom: 1rem"></mat-divider>
+    <div class="flex row al-center gap-1">
+      <button mat-raised-button color="accent" (click)="openDeleteDialog(job)">
+        Apagar
+      </button>
+      <button mat-raised-button color="primary">Editar</button>
+
+      <button mat-raised-button color="primary">Visualizar candidaturas</button>
+    </div>
+  </div> -->
 </mat-card>

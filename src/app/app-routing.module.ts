@@ -13,6 +13,9 @@ import { JobsPageComponent } from './pages/jobs-page/jobs-page.component';
 import { JobDetailsPageComponent } from './pages/job-details-page/job-details-page.component';
 import { JobApplicationDetailsPageComponent } from './pages/job-application-details-page/job-application-details-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { CreateJobPageComponent } from './pages/create-job-page/create-job-page.component';
+import { EditJobPageComponent } from './pages/edit-job-page/edit-job-page.component';
+import { SkillsComponent } from './pages/skills/skills.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -53,6 +56,24 @@ const routes: Routes = [
       {
         path: 'admin-panel',
         component: AdminPanelPageComponent,
+        canActivate: [RoleGuard],
+        data: { authority: 'ADMIN' },
+      },
+      {
+        path: 'skills',
+        component: SkillsComponent,
+        canActivate: [RoleGuard],
+        data: { authority: 'ADMIN' },
+      },
+      {
+        path: 'create-job',
+        component: CreateJobPageComponent,
+        canActivate: [RoleGuard],
+        data: { authority: 'ADMIN' },
+      },
+      {
+        path: 'edit-job',
+        component: EditJobPageComponent,
         canActivate: [RoleGuard],
         data: { authority: 'ADMIN' },
       },

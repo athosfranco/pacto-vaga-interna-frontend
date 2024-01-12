@@ -1,0 +1,18 @@
+<h1 *ngIf="!data.isEditing" mat-dialog-title>Criação de vaga</h1>
+<h1 *ngIf="data.isEditing" mat-dialog-title>Edição de vaga</h1>
+<mat-divider></mat-divider>
+<div *ngIf="!data.isEditing" mat-dialog-content>
+  Deseja confirmar a CRIAÇÃO da vaga <strong>{{ data.jobData.title }}</strong
+  >?
+</div>
+<div *ngIf="data.isEditing" mat-dialog-content>
+  Deseja confirmar a EDIÇÃO da vaga <strong>{{ data.jobData.title }}</strong
+  >?
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="accent" (click)="createOrEditJob()">
+    Confirmar
+  </button>
+</div>

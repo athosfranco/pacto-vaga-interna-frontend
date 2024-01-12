@@ -6,6 +6,8 @@ import { formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { ConfirmApplicationDialogComponent } from '../../component/confirm-application-dialog/confirm-application-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ConfirmJobExclusionDialogComponent } from '../../component/confirm-job-exclusion-dialog/confirm-job-exclusion-dialog.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-job-details-page',
@@ -19,7 +21,8 @@ export class JobDetailsPageComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private jobService: JobService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authService: AuthService
   ) {}
 
   formatTimeDifference(createdAt: string): string {
@@ -43,6 +46,12 @@ export class JobDetailsPageComponent implements OnInit {
     );
   }
 
+  goToEditJob(jobId: number) {
+    this.router.navigate(['/dashboard/edit-job'], {
+      queryParams: { id: jobId },
+    });
+  }
+
   openConfirmApplicationDialog() {
     const jobId = this.activatedRoute.snapshot.queryParams['id'];
 
@@ -64,6 +73,20 @@ export class JobDetailsPageComponent implements OnInit {
 
     this.dialog.open(ConfirmApplicationDialogComponent, {
       data: { userId, jobId, userMessage },
+    });
+  }
+
+  isAdmin(): boolean {
+    if (this.authService.hasAuthority('ADMIN')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  openDeleteDialog(job: any) {
+    this.dialog.open(ConfirmJobExclusionDialogComponent, {
+      data: job,
     });
   }
 }

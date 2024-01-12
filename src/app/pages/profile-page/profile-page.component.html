@@ -4,9 +4,17 @@
     <div style="z-index: 2" class="flex row al-center">
       <span *ngIf="user.gender === 'M'"> 🚹 </span>
       <span *ngIf="user.gender === 'F'"> 🚺 </span>
-      <span class="user-full-name">
-        {{ user.firstName }} {{ user.lastName }} ({{ user.username }})</span
-      >
+      <div class="flex row al-center gap-1">
+        <img
+          *ngIf="isAdmin()"
+          matTooltip="Usuário Administrador"
+          class="admin-icon"
+          src="../../../assets/crown.png"
+        />
+        <span class="user-full-name">
+          {{ user.firstName }} {{ user.lastName }} ({{ user.username }})
+        </span>
+      </div>
     </div>
 
     <div class="flex row al-center gap-1">
@@ -16,7 +24,7 @@
       <mat-chip>{{ formattedHireDate }}</mat-chip>
     </div>
   </div>
-  <mat-card class="section-card">
+  <mat-card class="section-card" *ngIf="!isAdmin()">
     <span class="section-title">Adicionar habilidade</span>
     <mat-divider style="margin-bottom: 1rem"></mat-divider>
     <div class="flex row al-center">

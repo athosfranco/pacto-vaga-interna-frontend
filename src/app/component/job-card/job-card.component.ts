@@ -2,6 +2,9 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { AuthService } from '../../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmJobExclusionDialogComponent } from '../confirm-job-exclusion-dialog/confirm-job-exclusion-dialog.component';
 
 @Component({
   selector: 'app-job-card',
@@ -9,7 +12,11 @@ import { ptBR } from 'date-fns/locale';
   styleUrls: ['./job-card.component.css'],
 })
 export class JobCardComponent {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private dialog: MatDialog
+  ) {}
 
   @Input() job: any;
   @Input() searchQuery!: string;
@@ -22,6 +29,20 @@ export class JobCardComponent {
   goToJobDetails(jobId: number) {
     this.router.navigate(['/dashboard/job-details'], {
       queryParams: { id: jobId },
+    });
+  }
+
+  isAdmin(): boolean {
+    if (this.authService.hasAuthority('ADMIN')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  openDeleteDialog(job: any) {
+    this.dialog.open(ConfirmJobExclusionDialogComponent, {
+      data: job,
     });
   }
 }

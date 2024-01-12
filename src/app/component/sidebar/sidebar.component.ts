@@ -1,5 +1,4 @@
-import { UserService } from './../../services/user.service';
-// sidebar.component.ts
+import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
 import { SidebarService } from '../../services/sidebar.service';
 import { LogoutDialogComponent } from '../logout-dialog/logout-dialog.component';
@@ -13,23 +12,22 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent {
   constructor(
+    private AuthService: AuthService,
     private sidebarService: SidebarService,
-    private userService: UserService,
     public dialog: MatDialog,
     private router: Router
   ) {}
 
-  userFirstName: string = '';
+  isAdmin(): boolean {
+    if (this.AuthService.hasAuthority('ADMIN')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   isSidebarOpen(): boolean {
     return this.sidebarService.isSidebarOpen();
-  }
-
-  ngOnInit(): void {
-    console.log('user:', this.userService.getUser());
-    this.userService.getUserObservable().subscribe((user) => {
-      this.userFirstName = user?.firstName || '';
-    });
   }
 
   openLogoutDialog() {

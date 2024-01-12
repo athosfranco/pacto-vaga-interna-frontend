@@ -1,0 +1,49 @@
+#create-job-page-container {
+}
+
+.example-form {
+  min-width: 150px;
+
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.job-requirement-card {
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.skill-chips-container {
+  padding: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.skill-chip {
+  padding: 5px 16px;
+  font-size: 1rem;
+  background-color: #31405d;
+  color: white;
+  border-radius: 16px;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s ease all;
+}
+
+.skill-chip:hover {
+  transform: scale(1.1);
+}
+
+.skill-chip:active {
+  transform: scale(0.9);
+}
+
+.skill-chip.selected-chip {
+  background-color: #ff4081;
+}

@@ -1,0 +1,10 @@
+.notif-item {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.notif-title {
+  font-weight: 600;
+  color: #3f51b5;
+}

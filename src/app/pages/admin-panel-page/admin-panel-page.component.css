@@ -1,0 +1,15 @@
+#admin-page-container {
+}
+.user-full-name {
+  margin: 1.2rem 0;
+  font-size: 1.2rem;
+  color: white;
+  z-index: 2;
+  font-family: "Montserrat", sans-serif;
+}
+.my-applications-title {
+  font-size: 1.2rem;
+  color: white;
+  z-index: 2;
+  font-family: "Montserrat", sans-serif;
+}

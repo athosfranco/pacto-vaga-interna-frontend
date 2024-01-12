@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+  {{ data.content }}
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-actions>
+  <button *ngIf="data.jobApplicationId" mat-raised-button>
+    Ver Candidatura
+  </button>
+  <button mat-button mat-dialog-close>Ok</button>
+</div>

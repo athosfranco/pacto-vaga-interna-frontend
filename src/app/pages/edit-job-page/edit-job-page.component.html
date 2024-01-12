@@ -1,0 +1,49 @@
+<div id="edit-job-page-container">
+  <div style="width: 100%" class="flex col jc-center gap-2">
+    <span class="page-title">Editar Vaga</span>
+
+    <form [formGroup]="jobEditForm" class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="title" autocomplete="off" />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Descrição da Vaga</mat-label>
+        <textarea formControlName="description" matInput></textarea>
+      </mat-form-field>
+
+      <mat-card class="job-requirement-card">
+        <span>Selecione os requisitos para essa vaga</span>
+        <mat-divider></mat-divider>
+        <div class="skill-chips-container">
+          <div
+            (click)="selectSkill(skill)"
+            *ngFor="let skill of allSkills"
+            class="skill-chip"
+            [class.selected-chip]="selectedSkills.includes(skill)"
+          >
+            {{ skill.skillName }}
+          </div>
+        </div>
+      </mat-card>
+
+      <button
+        (click)="openConfirmationDialog()"
+        style="width: 100%"
+        mat-raised-button
+        color="primary"
+        *ngIf="jobEditForm.valid && selectedSkills.length !== 0"
+      >
+        Confirmar edição de vaga
+      </button>
+    </form>
+  </div>
+  <span
+    style="padding: 1rem; width: 100%"
+    class="alert-fail"
+    *ngIf="jobEditForm.invalid || selectedSkills.length === 0"
+    >Preencha todos os campos e selecione ao menos um requisito para
+    prosseguir.</span
+  >
+</div>

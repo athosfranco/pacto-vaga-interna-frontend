@@ -1,6 +1,114 @@
-<div id="job-application-list-container">
+<div class="cards-container">
+  <mat-card
+    class="dashboard-card job-applications-card"
+    (click)="selectCategory('ALL')"
+  >
+    <span class="dashboard-card-value">{{ jobApplications.length }}</span>
+    <span class="dashboard-card-title"> Candidaturas</span>
+  </mat-card>
+  <mat-card
+    class="dashboard-card under-review-card"
+    (click)="selectCategory('UNDER_REVIEW')"
+  >
+    <span class="dashboard-card-value">{{
+      jobApplicationsUnderReview.length
+    }}</span>
+    <span class="dashboard-card-title"> Em Análise</span>
+  </mat-card>
+  <mat-card
+    class="dashboard-card finished-applications-card"
+    (click)="selectCategory('CLOSED')"
+  >
+    <span class="dashboard-card-value">{{
+      this.jobApplicationsClosed.length
+    }}</span>
+    <span class="dashboard-card-title">Encerradas</span>
+  </mat-card>
+
+  <mat-card
+    class="dashboard-card approved-jobs-card"
+    (click)="selectCategory('APPROVED')"
+  >
+    <span class="dashboard-card-value">{{
+      this.jobApplicationsApproved.length
+    }}</span>
+    <span class="dashboard-card-title"> Aprovadas </span>
+  </mat-card>
+</div>
+<!-- TODAS -->
+<div
+  class="fade-down"
+  *ngIf="categorySelected === 'ALL'"
+  id="job-application-list-container"
+>
+  <span class="gray-caption"
+    >Exibindo {{ jobApplications.length }} de
+    {{ jobApplications.length }} candidaturas</span
+  >
   <app-job-application-card
     *ngFor="let application of jobApplications"
     [jobApplication]="application"
   ></app-job-application-card>
+  <app-empty-result-img
+    *ngIf="jobApplications.length === 0"
+    [message]="'Você não possui nenhuma candidatura encerrada.'"
+  ></app-empty-result-img>
+</div>
+<!-- CANDIDATURAS EM ANÁLISE -->
+<div
+  class="fade-down"
+  *ngIf="categorySelected === 'UNDER_REVIEW'"
+  id="job-application-list-container"
+>
+  <span class="gray-caption"
+    >Exibindo {{ jobApplicationsUnderReview.length }} de
+    {{ jobApplications.length }} candidaturas</span
+  >
+  <app-job-application-card
+    *ngFor="let application of jobApplicationsUnderReview"
+    [jobApplication]="application"
+  ></app-job-application-card>
+  <app-empty-result-img
+    *ngIf="jobApplicationsUnderReview.length === 0"
+    [message]="'Você não possui nenhuma candidatura encerrada.'"
+  ></app-empty-result-img>
+</div>
+<!-- CANDIDATURAS APR0VADAS -->
+<div
+  class="fade-down"
+  *ngIf="categorySelected === 'APPROVED'"
+  id="job-application-list-container"
+>
+  <span class="gray-caption"
+    >Exibindo {{ jobApplicationsApproved.length }} de
+    {{ jobApplications.length }} candidaturas</span
+  >
+  <app-job-application-card
+    *ngFor="let application of jobApplicationsApproved"
+    [jobApplication]="application"
+  ></app-job-application-card>
+  <app-empty-result-img
+    *ngIf="jobApplicationsApproved.length === 0"
+    [message]="'Você não possui nenhuma candidatura encerrada.'"
+  ></app-empty-result-img>
+</div>
+
+<!-- CANDIDATURAS ENCERRADAS -->
+<div
+  class="fade-down"
+  *ngIf="categorySelected === 'CLOSED'"
+  id="job-application-list-container"
+>
+  <span class="gray-caption"
+    >Exibindo {{ jobApplicationsClosed.length }} de
+    {{ jobApplications.length }} candidaturas</span
+  >
+  <app-job-application-card
+    *ngFor="let application of jobApplicationsClosed"
+    [jobApplication]="application"
+  ></app-job-application-card>
+  <app-empty-result-img
+    *ngIf="jobApplicationsClosed.length === 0"
+    [message]="'Você não possui nenhuma candidatura encerrada.'"
+  ></app-empty-result-img>
 </div>

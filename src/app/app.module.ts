@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
@@ -66,6 +67,18 @@ import { JobApplicationCardComponent } from './component/job-application-card/jo
 import { JobApplicationListComponent } from './component/job-application-list/job-application-list.component';
 import { JobApplicationDetailsPageComponent } from './pages/job-application-details-page/job-application-details-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { NotificationButtonComponent } from './component/notification-button/notification-button.component';
+import { NotificationDialogComponent } from './component/notification-dialog/notification-dialog.component';
+import { EmptyResultImgComponent } from './component/empty-result-img/empty-result-img.component';
+import { ReviewApplicationListComponent } from './component/review-application-list/review-application-list.component';
+
+import { CreateJobPageComponent } from './pages/create-job-page/create-job-page.component';
+import { ConfirmJobCreationDialogComponent } from './component/confirm-job-creation-dialog/confirm-job-creation-dialog.component';
+import { ConfirmJobExclusionDialogComponent } from './component/confirm-job-exclusion-dialog/confirm-job-exclusion-dialog.component';
+import { EditJobPageComponent } from './pages/edit-job-page/edit-job-page.component';
+
+import { UpdateJobApplicationDialogComponent } from './component/update-job-application-dialog/update-job-application-dialog.component';
+import { SkillsComponent } from './pages/skills/skills.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +104,17 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     JobApplicationListComponent,
     JobApplicationDetailsPageComponent,
     ProfilePageComponent,
+    NotificationButtonComponent,
+    NotificationDialogComponent,
+    EmptyResultImgComponent,
+    ReviewApplicationListComponent,
+    EditJobPageComponent,
+
+    CreateJobPageComponent,
+    ConfirmJobCreationDialogComponent,
+    ConfirmJobExclusionDialogComponent,
+    UpdateJobApplicationDialogComponent,
+    SkillsComponent,
   ],
   imports: [
     BrowserModule,
@@ -118,6 +142,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     MatGridListModule,
     MatCardModule,
     MatStepperModule,
+    MatBadgeModule,
     MatTabsModule,
     MatExpansionModule,
     MatButtonToggleModule,

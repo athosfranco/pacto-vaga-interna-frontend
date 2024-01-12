@@ -1,6 +1,6 @@
 <div id="job-page-container">
   <div class="flex col">
-    <span class="page-title">Encontrar Vagas</span>
+    <span class="page-title">Lista de Vagas</span>
     <div class="search-field-container">
       <mat-form-field class="search-field">
         <mat-label>Pesquise por vagas aqui</mat-label>
@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div class="job-list" *ngFor="let job of jobList">
+  <div class="job-list fade-down" *ngFor="let job of jobList">
     <app-job-card [job]="job" [searchQuery]="searchValue"></app-job-card>
   </div>
   <div
@@ -46,6 +46,5 @@
       >Não foram encontrados resultados para
       <strong>{{ searchValue }}</strong></span
     >
-    =
   </div>
 </div>

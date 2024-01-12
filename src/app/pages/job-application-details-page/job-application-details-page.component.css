@@ -22,6 +22,19 @@
   background-color: #42567c;
   color: white;
 }
+
+.big-text {
+  font-size: 1.2rem;
+}
+
+.status-title-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
 .description {
   margin: 1rem 0;
 }

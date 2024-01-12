@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>🚨 Apagar Vaga</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+  <div style="padding: 1rem" class="alert-fail">
+    <span style="font-size: 1.2rem">
+      ATENÇÃO: você está prestes a <strong>APAGAR</strong> a vaga
+      <strong>{{ jobData.title }}</strong
+      >. Essa ação é <strong>irreversível</strong>. É recomendável que a vaga
+      tenha o status atualizado para "encerrada" ao invés de apagada.</span
+    >
+  </div>
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="accent" (click)="deleteJob()">
+    Confirmar
+  </button>
+</div>

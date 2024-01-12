@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { JobService } from '../../services/job.service';
 import { formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { AuthService } from '../../services/auth.service';
+import { UpdateJobApplicationDialogComponent } from '../../component/update-job-application-dialog/update-job-application-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-job-application-details-page',
@@ -12,14 +15,30 @@ import { ptBR } from 'date-fns/locale';
 export class JobApplicationDetailsPageComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private jobService: JobService
+    private jobService: JobService,
+    private authService: AuthService,
+    private dialog: MatDialog
   ) {}
+
+  isAdmin(): boolean {
+    if (this.authService.hasAuthority('ADMIN')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   jobApplication: any;
 
   formatTimeDifference(createdAt: string): string {
     const creationDate = new Date(createdAt);
     return formatDistanceToNow(creationDate, { locale: ptBR, addSuffix: true });
+  }
+
+  openUpdateApplicationDialog() {
+    this.dialog.open(UpdateJobApplicationDialogComponent, {
+      data: this.jobApplication,
+    });
   }
 
   ngOnInit(): void {

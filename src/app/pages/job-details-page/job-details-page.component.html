@@ -8,6 +8,28 @@
     ></span
   >
 
+  <div class="flex row al-center gap-1">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="goToEditJob(job.jobId)"
+      *ngIf="isAdmin()"
+    >
+      <mat-icon>edit</mat-icon>
+      Editar vaga
+    </button>
+
+    <button
+      mat-raised-button
+      color="accent"
+      *ngIf="isAdmin()"
+      (click)="openDeleteDialog(job)"
+    >
+      <mat-icon>delete</mat-icon>
+      Apagar Vaga
+    </button>
+  </div>
+
   <mat-card class="about">
     <span class="section-title">Descrição</span>
     <mat-divider></mat-divider>
@@ -27,7 +49,7 @@
     </div>
   </mat-card>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field *ngIf="!isAdmin()" class="example-full-width">
     <mat-label>Expresse seu interesse (Opcional)</mat-label>
     <textarea id="userMessage" maxlength="255" matInput></textarea>
   </mat-form-field>
@@ -35,6 +57,7 @@
   <button
     mat-raised-button
     color="accent"
+    *ngIf="!isAdmin()"
     (click)="openConfirmApplicationDialog()"
   >
     Aplicar para esta vaga

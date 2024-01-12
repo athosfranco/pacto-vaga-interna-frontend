@@ -1,10 +1,21 @@
 <div id="sidebar-container" [ngClass]="getSidebarStyles()">
   <mat-action-list class="nav-container">
-    <button mat-list-item (click)="navigateTo('user-panel')">
+    <button *ngIf="isAdmin()" mat-list-item (click)="navigateTo('admin-panel')">
+      <span class="sidebar-nav-span">Avaliação de Candidatos</span>
+    </button>
+
+    <button *ngIf="!isAdmin()" mat-list-item (click)="navigateTo('user-panel')">
       <span class="sidebar-nav-span">Painel do Candidato</span>
     </button>
     <button mat-list-item (click)="navigateTo('jobs')">
-      <span class="sidebar-nav-span">Encontrar Vagas</span>
+      <span (click)="navigateTo('jobs')" class="sidebar-nav-span"
+        >Encontrar Vagas</span
+      >
+    </button>
+    <button *ngIf="isAdmin()" mat-list-item (click)="navigateTo('skills')">
+      <span (click)="navigateTo('jobs')" class="sidebar-nav-span"
+        >Painel de Habilidades</span
+      >
     </button>
     <button mat-list-item>
       <span class="sidebar-nav-span" (click)="navigateTo('profile')"

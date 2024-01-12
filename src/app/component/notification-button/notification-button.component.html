@@ -1,0 +1,44 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon
+    matBadge="{{ notifications.length }}"
+    [matBadgeHidden]="notifications.length === 0"
+    matBadgeColor="warn"
+    >notifications</mat-icon
+  >
+</button>
+<mat-menu #menu="matMenu">
+  <div class="flex col" style="padding: 1rem">
+    <span style="font-size: 1rem; margin-bottom: 1rem" class="notif-header"
+      >Notificações</span
+    >
+    <mat-divider></mat-divider>
+  </div>
+
+  <div
+    *ngFor="let notification of notifications"
+    class="notif-item"
+    mat-menu-item
+    (click)="
+      openNotificationDialog(
+        notification.notificationId,
+        notification.title,
+        notification.content,
+        notification.jobApplicationId,
+        notification.createdAt
+      )
+    "
+  >
+    <span class="notif-title">{{ notification.title }}: </span>
+    <span
+      >{{ notification.content }} <br /><span
+        style="font-style: italic; font-size: 0.8rem"
+        >{{ formatTimeDifference(notification.createdAt) }}</span
+      ></span
+    >
+  </div>
+  <span
+    style="padding: 1rem; font-style: italic"
+    *ngIf="notifications.length === 0"
+    >Todas lidas</span
+  >
+</mat-menu>

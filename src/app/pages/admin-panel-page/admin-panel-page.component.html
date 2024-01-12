@@ -1,1 +1,33 @@
-<p>admin-panel-page works!</p>
+<div id="admin-page-container">
+  <div class="flex col">
+    <span class="page-title">Avaliação de Candidatos</span>
+
+    <div class="flex row al-center gap-1">
+      <img
+        matTooltip="Usuário Administrador"
+        class="admin-icon"
+        src="../../../assets/crown.png"
+      />
+      <span class="user-full-name"
+        >Bem vindo,
+        <strong>{{ user.firstName }} {{ user.lastName }}</strong></span
+      >
+    </div>
+
+    <div style="margin-top: 1rem" class="flex row jc-space-between al-center">
+      <span class="my-applications-title">Candidaturas</span>
+      <div class="flex row al-center gap-1">
+        <button mat-flat-button color="primary" (click)="goToJobs()">
+          <mat-icon>list</mat-icon>
+          Lista de vagas
+        </button>
+        <button mat-flat-button color="accent" (click)="goToCreateJob()">
+          <mat-icon>add</mat-icon>
+          Nova vaga
+        </button>
+      </div>
+    </div>
+
+    <app-review-application-list></app-review-application-list>
+  </div>
+</div>

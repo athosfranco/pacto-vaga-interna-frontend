@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Avaliar candidatura</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+  <p>O candidato vai receber uma atualização sobre esta candidatura.</p>
+  <div class="flex row gap-1 al-center">
+    <mat-form-field>
+      <mat-label>Estágio</mat-label>
+      <mat-select [(ngModel)]="selectedStage" name="selectedStage">
+        <mat-option *ngFor="let stage of stages" [value]="stage.value">{{
+          stage.viewValue
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Feedback</mat-label>
+      <input matInput [(ngModel)]="providedFeedback" name="providedFeedback" />
+    </mat-form-field>
+  </div>
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="handleUpdateJobApplication()"
+  >
+    Salvar
+  </button>
+</div>
