@@ -78,7 +78,7 @@ import { ConfirmJobExclusionDialogComponent } from './component/confirm-job-excl
 import { EditJobPageComponent } from './pages/edit-job-page/edit-job-page.component';
 
 import { UpdateJobApplicationDialogComponent } from './component/update-job-application-dialog/update-job-application-dialog.component';
-import { SkillsComponent } from './pages/skills/skills.component';
+import { SkillsPageComponent } from './pages/skills-page/skills-page.component';
 
 @NgModule({
   declarations: [
@@ -114,7 +114,7 @@ import { SkillsComponent } from './pages/skills/skills.component';
     ConfirmJobCreationDialogComponent,
     ConfirmJobExclusionDialogComponent,
     UpdateJobApplicationDialogComponent,
-    SkillsComponent,
+    SkillsPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -61,6 +61,18 @@
       >
     </div>
   </mat-card>
+  <mat-card *ngIf="isAdmin()" class="section-card">
+    <span class="section-title">Lista de Habilidades</span>
+    <mat-divider></mat-divider>
+    <div class="chip-container">
+      <div
+        *ngFor="let authority of user.authorities"
+        class="job-requirement-chip"
+      >
+        {{ authority.authority }}
+      </div>
+    </div>
+  </mat-card>
   <mat-card class="section-card">
     <span class="section-title">Níveis de Acesso</span>
     <mat-divider></mat-divider>

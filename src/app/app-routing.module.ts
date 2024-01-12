@@ -15,7 +15,7 @@ import { JobApplicationDetailsPageComponent } from './pages/job-application-deta
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { CreateJobPageComponent } from './pages/create-job-page/create-job-page.component';
 import { EditJobPageComponent } from './pages/edit-job-page/edit-job-page.component';
-import { SkillsComponent } from './pages/skills/skills.component';
+import { SkillsPageComponent } from './pages/skills-page/skills-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -59,9 +59,10 @@ const routes: Routes = [
         canActivate: [RoleGuard],
         data: { authority: 'ADMIN' },
       },
+
       {
         path: 'skills',
-        component: SkillsComponent,
+        component: SkillsPageComponent,
         canActivate: [RoleGuard],
         data: { authority: 'ADMIN' },
       },

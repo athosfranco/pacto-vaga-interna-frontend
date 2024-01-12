@@ -37,13 +37,17 @@
   <mat-divider style="margin: 1rem 0"></mat-divider>
   <div class="flex col">
     <span class="published-by"
-      >Você se candidatou em:
+      ><span *ngIf="isAdmin()">Data da candidatura:</span>
+      <span *ngIf="!isAdmin()">Você se candidatou em:</span>
       {{ formatDateTime(jobApplication.applicationDate) }}</span
     >
+
     <span *ngIf="jobApplication.userMessage"
-      ><strong class="primary-color">💬 Mensagem enviada:</strong> "{{
-        jobApplication.userMessage
-      }}"</span
+      ><strong class="primary-color"
+        >💬 <span *ngIf="!isAdmin()">Mensagem enviada</span
+        ><span *ngIf="isAdmin()">Mensagem do candidato</span>:</strong
+      >
+      "{{ jobApplication.userMessage }}"</span
     >
     <span *ngIf="jobApplication.feedback"
       ><strong class="accent-color">💬 Feedback do recrutador:</strong> "{{

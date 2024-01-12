@@ -8,15 +8,9 @@
       <span class="sidebar-nav-span">Painel do Candidato</span>
     </button>
     <button mat-list-item (click)="navigateTo('jobs')">
-      <span (click)="navigateTo('jobs')" class="sidebar-nav-span"
-        >Encontrar Vagas</span
-      >
+      <span class="sidebar-nav-span">Lista de Vagas</span>
     </button>
-    <button *ngIf="isAdmin()" mat-list-item (click)="navigateTo('skills')">
-      <span (click)="navigateTo('jobs')" class="sidebar-nav-span"
-        >Painel de Habilidades</span
-      >
-    </button>
+
     <button mat-list-item>
       <span class="sidebar-nav-span" (click)="navigateTo('profile')"
         >Meu Perfil</span
