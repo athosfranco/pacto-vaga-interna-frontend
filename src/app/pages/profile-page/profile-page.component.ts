@@ -5,6 +5,8 @@ import { differenceInMonths, differenceInYears } from 'date-fns';
 import { SkillService } from '../../services/skill.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SkillDialogComponent } from '../../component/skill-dialog/skill-dialog.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -16,7 +18,8 @@ export class ProfilePageComponent implements OnInit {
     private userService: UserService,
     private skillService: SkillService,
     private snackbar: MatSnackBar,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialog: MatDialog
   ) {}
 
   user: any;
@@ -26,6 +29,10 @@ export class ProfilePageComponent implements OnInit {
   skillsAvaliable: any[] = [];
 
   selectedSkill: any;
+
+  openSkillDialog() {
+    this.dialog.open(SkillDialogComponent);
+  }
 
   getSkillsFromServer() {
     this.skillService.getAllSkills().subscribe(

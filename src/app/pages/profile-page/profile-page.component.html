@@ -62,16 +62,18 @@
     </div>
   </mat-card>
   <mat-card *ngIf="isAdmin()" class="section-card">
-    <span class="section-title">Lista de Habilidades</span>
+    <span class="section-title">Habilidades e Requisitos</span>
     <mat-divider></mat-divider>
-    <div class="chip-container">
-      <div
-        *ngFor="let authority of user.authorities"
-        class="job-requirement-chip"
-      >
-        {{ authority.authority }}
-      </div>
-    </div>
+
+    <p class="alert-info" style="padding: 1rem">
+      Usuários administradores devem utilizar esta tela para administrar a lista
+      de requisitos disponíveis no sistema. Os requisitos criados aqui serão
+      disponibilizados para os usuários selecionarem como habilidades que
+      possuem. Além disso, podem compor os requisitos das vagas disponíveis.
+    </p>
+    <button mat-raised-button color="primary" (click)="openSkillDialog()">
+      <mat-icon>list</mat-icon> Lista de Habilidades e Requisitos
+    </button>
   </mat-card>
   <mat-card class="section-card">
     <span class="section-title">Níveis de Acesso</span>

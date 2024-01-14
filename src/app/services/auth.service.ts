@@ -10,7 +10,8 @@ import { UserService } from './user.service';
 })
 export class AuthService {
   private jwtHelper: JwtHelperService = new JwtHelperService();
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl =
+    'https://pacto-vaga-interna-backend-production.up.railway.app';
 
   private tokenExpiredNotification: boolean = false;
 

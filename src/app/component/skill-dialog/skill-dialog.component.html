@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>Lista de Habilidades e Requisitos</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="skillForm">
+    <div class="flex row jc-space-between gap-1">
+      <mat-form-field class="skill-name-input">
+        <mat-label>Nome da Habilidade</mat-label>
+        <input
+          [disabled]="this.loadingSkills"
+          maxlength="25"
+          matInput
+          formControlName="skillName"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="accent"
+        style="height: 55px"
+        [disabled]="this.loadingSkills"
+        (click)="addSkillToServer()"
+      >
+        <mat-icon>add</mat-icon> Criar
+      </button>
+    </div>
+  </form>
+  <mat-divider></mat-divider>
+  <div
+    style="min-width: 30vw; height: 310px"
+    class="flex row jc-center al-center gap-1"
+    *ngIf="loadingSkills"
+  >
+    <mat-spinner style="width: 40px"></mat-spinner>
+    <span>Carregando lista...</span>
+  </div>
+
+  <div class="skill-list" *ngIf="!this.loadingSkills">
+    <span>{{ allSkills.length }} registros encontrados</span>
+    <div class="skill-item" *ngFor="let skill of allSkills">
+      <span>{{ skill.skillName }}</span>
+      <button mat-icon-button (click)="deleteSkill(skill.skillId)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+  <button
+    [disabled]="this.loadingSkills"
+    mat-raised-button
+    color="primary"
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+  >
+    Fechar
+  </button>
+</mat-dialog-actions>

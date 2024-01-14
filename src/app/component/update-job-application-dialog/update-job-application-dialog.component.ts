@@ -62,7 +62,7 @@ export class UpdateJobApplicationDialogComponent {
             content: `A sua candidatura para a vaga  "${
               this.data.appliedJob.title
             }" ${this.getStageStringForNotification(
-              this.selectedStage.viewValue
+              this.selectedStage.value
             )}.`,
             destinationUserId: this.data.applicant.userId,
             read: false,

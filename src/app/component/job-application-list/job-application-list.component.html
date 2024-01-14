@@ -51,7 +51,7 @@
   ></app-job-application-card>
   <app-empty-result-img
     *ngIf="jobApplications.length === 0"
-    [message]="'Você não possui nenhuma candidatura encerrada.'"
+    [message]="'Você não possui nenhuma candidatura.'"
   ></app-empty-result-img>
 </div>
 <!-- CANDIDATURAS EM ANÁLISE -->
@@ -70,7 +70,7 @@
   ></app-job-application-card>
   <app-empty-result-img
     *ngIf="jobApplicationsUnderReview.length === 0"
-    [message]="'Você não possui nenhuma candidatura encerrada.'"
+    [message]="'Você não possui nenhuma candidatura em análise.'"
   ></app-empty-result-img>
 </div>
 <!-- CANDIDATURAS APR0VADAS -->
@@ -89,7 +89,7 @@
   ></app-job-application-card>
   <app-empty-result-img
     *ngIf="jobApplicationsApproved.length === 0"
-    [message]="'Você não possui nenhuma candidatura encerrada.'"
+    [message]="'Você não possui nenhuma candidatura aprovada.'"
   ></app-empty-result-img>
 </div>
 

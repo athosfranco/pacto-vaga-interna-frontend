@@ -42,7 +42,10 @@
     *ngIf="jobList.length === 0"
   >
     <img src="../../../assets/emptysearch.svg" />
-    <span
+    <span *ngIf="lastSearch.length === 0"
+      >Não foram encontrados resultados</span
+    >
+    <span *ngIf="lastSearch.length !== 0"
       >Não foram encontrados resultados para
       <strong>{{ searchValue }}</strong></span
     >

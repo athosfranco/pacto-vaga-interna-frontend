@@ -25,20 +25,24 @@ export class JobsPageComponent implements OnInit, OnDestroy {
   }
 
   getAllJobs() {
-    this.http.get<any[]>('http://localhost:8080/api/jobs').subscribe(
-      (response) => {
-        console.log('RESPOSTA INICIAL', response);
-        this.jobList = response.sort((a, b) =>
-          this.compareDates(b.createdAt, a.createdAt)
-        );
+    this.http
+      .get<any[]>(
+        'https://pacto-vaga-interna-backend-production.up.railway.app/api/jobs'
+      )
+      .subscribe(
+        (response) => {
+          console.log('RESPOSTA INICIAL', response);
+          this.jobList = response.sort((a, b) =>
+            this.compareDates(b.createdAt, a.createdAt)
+          );
 
-        this.isLoading = false;
-      },
-      (error) => {
-        console.error('Erro ao carregar vagas de trabalho iniciais:', error);
-        this.isLoading = false;
-      }
-    );
+          this.isLoading = false;
+        },
+        (error) => {
+          console.error('Erro ao carregar vagas de trabalho iniciais:', error);
+          this.isLoading = false;
+        }
+      );
   }
 
   ngOnInit() {
@@ -55,7 +59,7 @@ export class JobsPageComponent implements OnInit, OnDestroy {
             this.lastSearch = query;
             return this.http
               .get<any[]>(
-                `http://localhost:8080/api/jobs/search?query=${query}`
+                `https://pacto-vaga-interna-backend-production.up.railway.app/api/jobs/search?query=${query}`
               )
               .pipe(
                 finalize(() => {

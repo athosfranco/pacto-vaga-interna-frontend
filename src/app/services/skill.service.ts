@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SkillService {
-  private apiUrl = 'http://localhost:8080/api';
+  private apiUrl =
+    'https://pacto-vaga-interna-backend-production.up.railway.app/api';
 
   constructor(private http: HttpClient) {}
 
@@ -28,5 +29,15 @@ export class SkillService {
       .set('expYears', expYears);
 
     return this.http.post<any>(url, {}, { params });
+  }
+  addSkill(requestBody: any): Observable<any> {
+    const url = `${this.apiUrl}/skills`;
+
+    return this.http.post<any>(url, requestBody);
+  }
+
+  deleteSkill(skillId: string): Observable<any> {
+    const url = `${this.apiUrl}/skills/${skillId}`;
+    return this.http.delete<any>(url);
   }
 }

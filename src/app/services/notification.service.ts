@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class NotificationService {
-  private baseUrl = 'http://localhost:8080/api/notifications';
+  private baseUrl =
+    'https://pacto-vaga-interna-backend-production.up.railway.app/api/notifications';
 
   constructor(private http: HttpClient) {}
 

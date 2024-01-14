@@ -29,8 +29,6 @@ import { UserService } from '../../services/user.service';
   ],
 })
 export class LoginComponent implements OnInit {
-  loginForm!: FormGroup;
-
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
@@ -39,6 +37,8 @@ export class LoginComponent implements OnInit {
   ) {}
 
   tokenExpiredNotif: boolean = false;
+
+  loginForm!: FormGroup;
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({

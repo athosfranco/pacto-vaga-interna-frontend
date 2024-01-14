@@ -27,7 +27,7 @@ export class UserService {
   }
 
   getUserById(userId: string): Observable<any> {
-    const url = `http://localhost:8080/api/users/${userId}`;
+    const url = `https://pacto-vaga-interna-backend-production.up.railway.app/api/users/${userId}`;
     return this.http.get<any>(url);
   }
 }

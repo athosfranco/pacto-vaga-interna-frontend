@@ -41,6 +41,9 @@
           >
             {{ skill.skillName }}
           </div>
+          <div *ngIf="allSkills.length === 0" class="alert-fail">
+            Não existem requisitos cadastrados no sistema.
+          </div>
         </div>
       </mat-card>
 

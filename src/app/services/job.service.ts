@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class JobService {
-  private apiUrl = 'http://localhost:8080/api';
+  private apiUrl =
+    'https://pacto-vaga-interna-backend-production.up.railway.app/api';
 
   constructor(private http: HttpClient) {}
 
