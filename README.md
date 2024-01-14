@@ -1,27 +1,51 @@
-# VagasInternasFrontend
+# Desafio Técnico - App de Recrutamento Interno 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+Esse é o repositório do Frontend do Desafio Técnico para a vaga de Desenvolvedor Full Stack (Java e Angular) - Nível Pleno. Este projeto visa criar uma aplicação web que facilita o processo de recrutamento interno para os colaboradores da empresa. O projeto foi desenvolvido com Angular no frontend, Spring Boot no backend e banco de dados relacional PostgreSQL.
 
-## Development server
+## Objetivo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Desenvolver uma aplicação que permita aos usuários pesquisar e candidatar-se a vagas internas
 
-## Code scaffolding
+## Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. **Autenticação e Autorização:**
+   - Sistema de autenticação com tokens JWT seguro para os usuários
 
-## Build
+2. **Cadastro de Vagas:**
+   - Administradores cadastram novas vagas, incluindo informações como título, descrição e requisitos.
+   - Administradores podem efetuar a atualização e exclusão de vagas.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3. **Candidatura a Vagas:**
+   - Os colaboradores podem efetuar sua candidatura às vagas e expressar interesse em uma posição específica.
+   - Notificações aos responsáveis pela vaga e ao candidato.
 
-## Running unit tests
+4. **Painel do Candidato (Bônus):**
+   - Criar um painel para os candidatos acompanharem o status de suas candidaturas e receberem feedbacks.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5. **Avaliação de Candidatos (Bônus):**
+   - Sistema de avaliação de candidatos pelos responsáveis pela vaga, incluindo filtros de requisitos ou tempo de empresa.
 
-## Running end-to-end tests
+## Como Rodar a Aplicação
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+É possível testar a aplicação em produção diretamente no link https://main--desafio-tecnico-pacto-frontend.netlify.app/login
 
-## Further help
+O frontend está hospedado no Netlify. O backend e uma instância do banco de dados PostgreSQL estão hospedados no Railway. 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Rodando a Aplicação na Máquina Local
+
+1. **Backend (Spring Boot):**
+   - Acesse o repositório do backend
+   - Faça um clone do projeto
+   - Configure as variáveis de ambiente no arquivo de configuração application.properties
+   - Execute a aplicação Spring Boot
+
+3. **Frontend (Angular):**
+   - Acesse o repositório do frontend
+   - Faça um clone do projeto
+   - Instale as dependências: `npm install`
+   - Inicie o servidor de desenvolvimento: `ng serve`
+
+ Após seguir os passos acima, acesse http://localhost:4200/ no navegador. A aplicação estará disponível localmente para testes.
+
+Não hesite em entrar em contato se precisar de suporte ou tiver alguma dúvida.
+
