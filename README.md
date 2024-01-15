@@ -28,11 +28,15 @@ Desenvolver uma aplicação que permita aos usuários pesquisar e candidatar-se 
 5. **Avaliação de Candidatos (Bônus):**
    - Sistema de avaliação de candidatos pelos responsáveis pela vaga, incluindo filtros de requisitos ou tempo de empresa.
 
-## Como Rodar a Aplicação
+## 🚀 Como Rodar a Aplicação
 
 É possível testar a aplicação em produção diretamente no link https://main--desafio-tecnico-pacto-frontend.netlify.app/login
 
 O frontend está hospedado no Netlify. O backend e uma instância do banco de dados PostgreSQL estão hospedados no Railway. 
+
+### CREDENCIAIS DE ADMIN:
+### Login: admin 
+### Senha: 123
 
 ## Rodando a Aplicação na Máquina Local
 
