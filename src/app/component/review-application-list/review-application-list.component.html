@@ -39,6 +39,9 @@
       </mat-card>
     </div>
   </div>
+  <div *ngIf="isLoading" class="flex column al-center jc-center gap-1">
+    <mat-spinner></mat-spinner>
+  </div>
   <div
     class="fade-down"
     *ngIf="categorySelected === 'UNDER_REVIEW'"
@@ -46,14 +49,14 @@
   >
     <span class="gray-caption"
       >Exibindo {{ jobApplicationsUnderReview.length }} de
-      {{ jobApplicationsUnderReview.length }} candidaturas</span
+      {{ jobApplications.length }} candidaturas</span
     >
     <app-job-application-card
       *ngFor="let application of jobApplicationsUnderReview"
       [jobApplication]="application"
     ></app-job-application-card>
     <app-empty-result-img
-      *ngIf="jobApplicationsUnderReview.length === 0"
+      *ngIf="jobApplicationsUnderReview.length === 0 && !isLoading"
       [message]="'Você não possui nenhuma candidatura não avaliada.'"
     ></app-empty-result-img>
   </div>
@@ -72,8 +75,27 @@
       [jobApplication]="application"
     ></app-job-application-card>
     <app-empty-result-img
-      *ngIf="jobApplicationsApproved.length === 0"
+      *ngIf="jobApplicationsApproved.length === 0 && !isLoading"
       [message]="'Você não possui nenhuma candidatura encerrada.'"
+    ></app-empty-result-img>
+  </div>
+  <!-- CANDIDATURAS REJEITADAS -->
+  <div
+    class="fade-down"
+    *ngIf="categorySelected === 'REJECTED'"
+    id="job-application-list-container"
+  >
+    <span class="gray-caption"
+      >Exibindo {{ jobApplicationsRejected.length }} de
+      {{ jobApplications.length }} candidaturas</span
+    >
+    <app-job-application-card
+      *ngFor="let application of jobApplicationsRejected"
+      [jobApplication]="application"
+    ></app-job-application-card>
+    <app-empty-result-img
+      *ngIf="jobApplicationsRejected.length === 0 && !isLoading"
+      [message]="'Você não possui nenhuma candidatura rejeitada.'"
     ></app-empty-result-img>
   </div>
 
@@ -92,7 +114,7 @@
       [jobApplication]="application"
     ></app-job-application-card>
     <app-empty-result-img
-      *ngIf="jobApplicationsClosed.length === 0"
+      *ngIf="jobApplicationsClosed.length === 0 && !isLoading"
       [message]="'Você não possui nenhuma candidatura encerrada.'"
     ></app-empty-result-img>
   </div>

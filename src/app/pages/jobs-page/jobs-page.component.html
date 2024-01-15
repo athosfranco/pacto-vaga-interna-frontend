@@ -10,6 +10,7 @@
           type="text"
           [(ngModel)]="searchValue"
           (input)="onSearchInputChange()"
+          [disabled]="isLoading"
         />
         @if (searchValue) {
         <button
@@ -37,9 +38,12 @@
   <div class="job-list fade-down" *ngFor="let job of jobList">
     <app-job-card [job]="job" [searchQuery]="searchValue"></app-job-card>
   </div>
+  <div *ngIf="isLoading" class="flex column al-center jc-center gap-1">
+    <mat-spinner></mat-spinner>
+  </div>
   <div
     class="no-results-container flex col al-center jc-center"
-    *ngIf="jobList.length === 0"
+    *ngIf="jobList.length === 0 && !isLoading"
   >
     <img src="../../../assets/emptysearch.svg" />
     <span *ngIf="lastSearch.length === 0"

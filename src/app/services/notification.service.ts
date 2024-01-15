@@ -15,6 +15,10 @@ export class NotificationService {
     return this.http.post(`${this.baseUrl}`, notification);
   }
 
+  sendNotificationToAdmins(notification: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}`, notification);
+  }
+
   getAllNotifications(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}`);
   }

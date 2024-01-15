@@ -25,6 +25,8 @@ export class JobDetailsPageComponent implements OnInit {
     private authService: AuthService
   ) {}
 
+  isLoading: boolean = false;
+
   formatTimeDifference(createdAt: string): string {
     const creationDate = new Date(createdAt);
     return formatDistanceToNow(creationDate, { locale: ptBR, addSuffix: true });
@@ -35,13 +37,17 @@ export class JobDetailsPageComponent implements OnInit {
 
     console.log('Job ID:', jobId);
 
+    this.isLoading = true;
+
     this.jobService.getJobById(jobId).subscribe(
       (jobDetails) => {
         this.job = jobDetails;
         console.log('Job Details:', jobDetails);
+        this.isLoading = false;
       },
       (error) => {
         console.error('Error fetching job details:', error);
+        this.isLoading = false;
       }
     );
   }

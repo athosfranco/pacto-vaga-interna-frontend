@@ -6,7 +6,7 @@
   <img class="finish-img" src="../../../assets/finished.svg" />
   <span
     >Parabéns! Você agora está participando do processo seletivo desta vaga. Vá
-    para <strong>Painel do Candidato</strong> para acompanhar.</span
+    para O <strong>Painel do Candidato</strong> para acompanhar.</span
   >
 </div>
 <div class="content" *ngIf="finishedRequest === 'Fail'" mat-dialog-content>
@@ -21,7 +21,7 @@
     color="primary"
     [disabled]="isLoading"
     mat-flat-button
-    mat-dialog-close
+    (click)="closeFinishedRequest()"
   >
     OK
   </button>

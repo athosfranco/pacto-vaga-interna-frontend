@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { JobService } from '../../services/job.service';
 import { NotificationService } from '../../services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirm-application-dialog',
@@ -11,6 +12,7 @@ import { NotificationService } from '../../services/notification.service';
 export class ConfirmApplicationDialogComponent {
   constructor(
     private dialogRef: MatDialogRef<ConfirmApplicationDialogComponent>,
+    private router: Router,
     private jobService: JobService,
     private notificationService: NotificationService,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -42,9 +44,9 @@ export class ConfirmApplicationDialogComponent {
           this.jobService.getJobById(jobId).subscribe((response) => {
             console.log('job found:', response);
             const notification = {
-              title: 'Candidatura em análise',
-              content: `A sua candidatura para a vaga de ${response.title} está em análise.`,
-              destinationUserId: userId,
+              title: 'Nova candidatura',
+              content: `A vaga ${response.title} recebeu uma nova candidatura.`,
+              destinationUserId: 1,
               read: false,
             };
 
@@ -65,5 +67,10 @@ export class ConfirmApplicationDialogComponent {
           console.error('Error registering job application:', error);
         }
       );
+  }
+
+  closeFinishedRequest() {
+    this.dialogRef.close();
+    this.router.navigate(['/dashboard/user-panel']);
   }
 }
