@@ -31,7 +31,7 @@
       <mat-form-field style="flex: 1">
         <mat-label>Selecione uma habilidade</mat-label>
         <mat-select
-          [disabled]="skillsAvaliable.length === 0"
+          [disabled]="skillsAvaliable.length === 0 || isLoading"
           [(value)]="selectedSkill"
         >
           <mat-option *ngFor="let skill of skillsAvaliable" [value]="skill">
@@ -41,12 +41,17 @@
       </mat-form-field>
       <button
         class="add-skill-btn"
-        [disabled]="skillsAvaliable.length === 0"
+        [disabled]="skillsAvaliable.length === 0 || isLoading"
         mat-raised-button
         color="primary"
         (click)="addSkillToUser()"
       >
-        Adicionar
+        <span *ngIf="!isLoading">Adicionar</span>
+        <mat-spinner
+          *ngIf="isLoading"
+          color="accent"
+          style="width: 30px"
+        ></mat-spinner>
       </button>
     </div>
     <span class="section-title">Suas Habilidades</span>

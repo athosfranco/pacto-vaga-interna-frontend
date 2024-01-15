@@ -52,9 +52,9 @@ export class JobsPageComponent implements OnInit, OnDestroy {
 
     this.subscription = this.searchSubject
       .pipe(
-        debounceTime(1000),
+        debounceTime(300),
         switchMap((query: string) => {
-          if (query.length >= 3) {
+          if (query.length > 0) {
             this.isLoading = true;
             this.lastSearch = query;
             return this.http
@@ -67,7 +67,7 @@ export class JobsPageComponent implements OnInit, OnDestroy {
                 })
               );
           } else {
-            this.isLoading = false;
+            this.handleClear();
             return [];
           }
         })

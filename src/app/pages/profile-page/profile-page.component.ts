@@ -30,6 +30,8 @@ export class ProfilePageComponent implements OnInit {
 
   selectedSkill: any;
 
+  isLoading: boolean = false;
+
   openSkillDialog() {
     this.dialog.open(SkillDialogComponent);
   }
@@ -62,15 +64,18 @@ export class ProfilePageComponent implements OnInit {
   }
 
   addSkillToUser() {
+    this.isLoading = true;
     this.skillService
       .addSkillsToUser(this.user.userId, this.selectedSkill.skillId, 2)
       .subscribe(
         (response) => {
           console.log('SKILL ADDED:', response);
           this.updateUserInfo();
+          this.isLoading = false;
         },
         (error) => {
           this.openErrorSnackBar(error.error.message);
+          this.isLoading = false;
         }
       );
   }

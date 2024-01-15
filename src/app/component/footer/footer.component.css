@@ -1,0 +1,9 @@
+#footer-container {
+  padding: 1rem;
+  min-height: 50px;
+  background-color: #222c3f;
+  -webkit-box-shadow: 0px -5px 25px -7px rgba(0, 0, 0, 0.71);
+  -moz-box-shadow: 0px -5px 25px -7px rgba(0, 0, 0, 0.71);
+  box-shadow: 0px -5px 25px -7px rgba(0, 0, 0, 0.71);
+  margin-top: 1rem;
+}

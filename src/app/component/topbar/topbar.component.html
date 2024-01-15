@@ -12,7 +12,12 @@
   <span class="app-title" style="margin-left: 10px">Vagas Internas</span>
   <span class="example-spacer"></span>
   <app-notification-button></app-notification-button>
-  <mat-chip style="margin-left: 5px" *ngIf="user" color="accent">
+  <mat-chip
+    style="margin-left: 5px"
+    *ngIf="user"
+    color="accent"
+    (click)="goToProfile()"
+  >
     <img
       matChipAvatar
       src="https://material.angular.io/assets/img/examples/shiba1.jpg"

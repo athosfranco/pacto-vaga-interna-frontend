@@ -80,6 +80,8 @@ import { EditJobPageComponent } from './pages/edit-job-page/edit-job-page.compon
 import { UpdateJobApplicationDialogComponent } from './component/update-job-application-dialog/update-job-application-dialog.component';
 import { SkillsPageComponent } from './pages/skills-page/skills-page.component';
 import { SkillDialogComponent } from './component/skill-dialog/skill-dialog.component';
+import { FooterComponent } from './component/footer/footer.component';
+import { ScrollToTopComponent } from './component/scroll-to-top/scroll-to-top.component';
 
 @NgModule({
   declarations: [
@@ -117,6 +119,8 @@ import { SkillDialogComponent } from './component/skill-dialog/skill-dialog.comp
     UpdateJobApplicationDialogComponent,
     SkillsPageComponent,
     SkillDialogComponent,
+    FooterComponent,
+    ScrollToTopComponent,
   ],
   imports: [
     BrowserModule,

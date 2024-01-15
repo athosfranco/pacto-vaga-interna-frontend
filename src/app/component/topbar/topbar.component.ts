@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../services/sidebar.service';
 import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
@@ -14,7 +15,8 @@ export class TopbarComponent implements OnInit {
 
   constructor(
     private sidebarService: SidebarService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -26,5 +28,9 @@ export class TopbarComponent implements OnInit {
 
   toggleSidebar(): void {
     this.sidebarService.toggleSidebar();
+  }
+
+  goToProfile(): void {
+    this.router.navigate(['/dashboard/profile']);
   }
 }
