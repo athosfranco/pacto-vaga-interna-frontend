@@ -45,13 +45,16 @@ Para CRIAR, editar ou deletar vagas e avaliar candidaturas, use a conta admin:
 ### Login: admin 
 ### Senha: 123
 
+A API também está documentada no Swagger: https://pacto-vaga-interna-backend-production.up.railway.app/swagger-ui/index.html#/
+
 ## Rodando a Aplicação na Máquina Local
 
 1. **Backend (Spring Boot):**
    - Acesse o repositório do backend (https://github.com/athosfranco/pacto-vaga-interna-backend/tree/main)
    - Faça um clone do projeto
    - Configure as variáveis de ambiente no arquivo de configuração application.properties
-   - Execute a aplicação Spring Boot
+   - Execute a aplicação Spring Boot na porta 8080  
+   - IMPORTANTE: É necessário configurar uma instância de acesso ao banco de dados PostgreSQL localmente para garantir a persistência dos dados
 
 3. **Frontend (Angular):**
    - Acesse o repositório do frontend (https://github.com/athosfranco/pacto-vaga-interna-frontend/tree/main)
