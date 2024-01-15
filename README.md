@@ -1,27 +1,63 @@
-# VagasInternasFrontend
+![image](https://github.com/athosfranco/pacto-vaga-interna-frontend/assets/73993813/85d71dfc-d43b-4e6a-8d39-a13eb87cac52)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
 
-## Development server
+# Desafio Técnico - App de Recrutamento Interno (FRONTEND)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Esse é o repositório do Frontend do Desafio Técnico para a vaga de Desenvolvedor Full Stack (Java e Angular) - Nível Pleno. Este projeto visa criar uma aplicação web que facilita o processo de recrutamento interno para os colaboradores da empresa. O projeto foi desenvolvido com Angular no frontend, Spring Boot no backend e banco de dados relacional PostgreSQL.
 
-## Code scaffolding
+## Objetivo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Desenvolver uma aplicação que permita aos usuários pesquisar e candidatar-se a vagas internas
 
-## Build
+## Funcionalidades
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Autenticação e Autorização:**
+   - Sistema de autenticação com tokens JWT seguro para os usuários
 
-## Running unit tests
+2. **Cadastro de Vagas:**
+   - Administradores cadastram novas vagas, incluindo informações como título, descrição e requisitos.
+   - Administradores podem efetuar a atualização e exclusão de vagas.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. **Candidatura a Vagas:**
+   - Os colaboradores podem efetuar sua candidatura às vagas e expressar interesse em uma posição específica.
+   - Notificações aos responsáveis pela vaga e ao candidato.
 
-## Running end-to-end tests
+4. **Painel do Candidato (Bônus):**
+   - Criar um painel para os candidatos acompanharem o status de suas candidaturas e receberem feedbacks.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+5. **Avaliação de Candidatos (Bônus):**
+   - Sistema de avaliação de candidatos pelos responsáveis pela vaga, incluindo filtros de requisitos ou tempo de empresa.
 
-## Further help
+## 🚀 Como Rodar a Aplicação
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+É possível testar a aplicação em produção diretamente no link https://main--desafio-tecnico-pacto-frontend.netlify.app/login
+
+O frontend está hospedado no Netlify. O backend e uma instância do banco de dados PostgreSQL estão hospedados no Railway. 
+
+Para se candidatar para as vagas, crie uma conta nova no menu "Registrar" ou utilize as credenciais de teste a seguir: <br>
+### Login: athosfranco <br>
+### Senha: athos123
+
+Para CRIAR, editar ou deletar vagas e avaliar candidaturas, use a conta admin:
+
+### Login: admin 
+### Senha: 123
+
+## Rodando a Aplicação na Máquina Local
+
+1. **Backend (Spring Boot):**
+   - Acesse o repositório do backend (https://github.com/athosfranco/pacto-vaga-interna-backend/tree/main)
+   - Faça um clone do projeto
+   - Configure as variáveis de ambiente no arquivo de configuração application.properties
+   - Execute a aplicação Spring Boot
+
+3. **Frontend (Angular):**
+   - Acesse o repositório do frontend (https://github.com/athosfranco/pacto-vaga-interna-frontend/tree/main)
+   - Faça um clone do projeto
+   - Instale as dependências: `npm install`
+   - Inicie o servidor de desenvolvimento: `ng serve`
+
+ Após seguir os passos acima, acesse http://localhost:4200/ no navegador. A aplicação estará disponível localmente para testes.
+
+Não hesite em entrar em contato se precisar de suporte ou tiver alguma dúvida.
+
