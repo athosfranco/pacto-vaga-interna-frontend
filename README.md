@@ -1,6 +1,4 @@
 ![image](https://github.com/athosfranco/pacto-vaga-interna-frontend/assets/73993813/85d71dfc-d43b-4e6a-8d39-a13eb87cac52)
-
-
 # Desafio Técnico - App de Recrutamento Interno (FRONTEND)
 
 Esse é o repositório do Frontend do Desafio Técnico para a vaga de Desenvolvedor Full Stack (Java e Angular) - Nível Pleno. Este projeto visa criar uma aplicação web que facilita o processo de recrutamento interno para os colaboradores da empresa. O projeto foi desenvolvido com Angular no frontend, Spring Boot no backend e banco de dados relacional PostgreSQL.
@@ -27,6 +25,10 @@ Desenvolver uma aplicação que permita aos usuários pesquisar e candidatar-se 
 
 5. **Avaliação de Candidatos (Bônus):**
    - Sistema de avaliação de candidatos pelos responsáveis pela vaga, incluindo filtros de requisitos ou tempo de empresa.
+
+6. **Responsividade**
+   - A aplicação é funcional em diferentes dispositivos, como celulares e tablets.
+     ![image](https://github.com/athosfranco/pacto-vaga-interna-frontend/assets/73993813/9c74584b-db37-4b60-84b5-9e914c9ec652)
 
 ## 🚀 Como Rodar a Aplicação
 
